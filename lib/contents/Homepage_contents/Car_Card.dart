@@ -458,6 +458,7 @@ class Car_Card_Constant {
   static const double distance_between_card_parts = 12;
   static const double textcontainer_w = 160;
   static const double icon_container_w = 80;
+  static const double textfield_container_w = 88;
 
   static const double fontsize1 = 16;
 }

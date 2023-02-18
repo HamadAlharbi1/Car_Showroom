@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../contents/Homepage_contents/Car_Card.dart';
 import '../contents/modols.dart';
 import '../loginpages/navigator.dart';
+import 'newcar.dart';
 
 class EditCar extends StatefulWidget {
   final Car car;
@@ -15,6 +16,8 @@ class EditCar extends StatefulWidget {
 }
 
 class _EditCarState extends State<EditCar> {
+  final selecteditrrm = 'Toyota';
+  final TextEditingController _parkingNumberController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sellernameController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
@@ -75,6 +78,8 @@ class _EditCarState extends State<EditCar> {
                     Padding(
                       padding: const EdgeInsets.all(12),
                       child: Container(
+                        height: Car_Card_Constant.photo_Box_w,
+                        width: Car_Card_Constant.photo_Box_w,
                         clipBehavior: Clip.hardEdge,
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                         child: Image.network(
@@ -83,46 +88,44 @@ class _EditCarState extends State<EditCar> {
                         ),
                       ),
                     ),
-                    TextFormField(
-                      controller: _sellernameController, //
-                      decoration: const InputDecoration(labelText: 'المالك'),
+                    const SizedBox(
+                      height: 75,
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _nameController, //
-                      decoration: const InputDecoration(labelText: 'النوع'),
+                    Choose_from_the_list(
+                      title_of_list: 'نوع الشركة المصنعة',
+                      defult_Type: selecteditrrm,
+                      array_of_items: const ['Toyota', 'KIA', 'Honda'],
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _priceController, //
-                      decoration: const InputDecoration(labelText: 'السعر'),
+                    const Choose_from_the_list(
+                      title_of_list: ' سنة الصنع',
+                      defult_Type: '2023',
+                      array_of_items: ['2023', '2022', '2021'],
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _modelController, //
-                      decoration: const InputDecoration(labelText: 'الموديل'),
+                    const Choose_from_the_list(
+                      title_of_list: ' انتهاء التأمين',
+                      defult_Type: '2023',
+                      array_of_items: ['2023', '2022', '2021'],
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _pNumberController, //
-                      decoration: const InputDecoration(labelText: 'رقم اللوحة'),
+                    const Choose_from_the_list(
+                      title_of_list: ' انتهاء الاستمارة',
+                      defult_Type: '2023',
+                      array_of_items: ['2023', '2024', '2025'],
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _insuranceController, //
-                      decoration: const InputDecoration(labelText: 'تاريخ انتهاء التأمين'),
+                    text_field_container(
+                      Controller: _priceController,
+                      textfield_content: 'السعر',
+                      title_for_textfield: 'سعرالمركبة',
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _plateNumberController, //
-                      decoration: const InputDecoration(labelText: 'رقم موقف السيارة'),
+                    text_field_container(
+                      Controller: _pNumberController,
+                      textfield_content: 'رقم اللوحة',
+                      title_for_textfield: 'ادخل لوحة المركبة',
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _licenseStatusController, //
-                      decoration: const InputDecoration(labelText: 'حالة الترخيص'),
+                    text_field_container(
+                      Controller: _parkingNumberController,
+                      textfield_content: 'رقم موقف السيارة',
+                      title_for_textfield: 'ادخل رقم الموقف',
                     ),
-                    const SizedBox(height: 32),
                   ],
                 ),
               ),
@@ -233,3 +236,52 @@ class _EditCarState extends State<EditCar> {
         ));
   }
 }
+
+
+
+/**
+ * 
+ *    TextFormField(
+                      controller: _sellernameController, 
+                      decoration: const InputDecoration(labelText: 'المالك'),
+                    ),
+                    const SizedBox(height: 16),
+                // النوع
+                    TextFormField(
+                      controller: _nameController, 
+                      decoration: const InputDecoration(labelText: 'النوع'),
+                    ),
+                    const SizedBox(height: 16),
+             // السعر
+                    TextFormField(
+                      controller: _priceController, //
+                      decoration: const InputDecoration(labelText: 'السعر'),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _modelController, //
+                      decoration: const InputDecoration(labelText: 'الموديل'),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _pNumberController, //
+                      decoration: const InputDecoration(labelText: 'رقم اللوحة'),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _insuranceController, //
+                      decoration: const InputDecoration(labelText: 'تاريخ انتهاء التأمين'),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _plateNumberController, //
+                      decoration: const InputDecoration(labelText: 'رقم موقف السيارة'),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _licenseStatusController, //
+                      decoration: const InputDecoration(labelText: 'حالة الترخيص'),
+                    ),
+                    const SizedBox(height: 32),
+                
+ */
