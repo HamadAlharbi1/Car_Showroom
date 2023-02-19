@@ -64,7 +64,6 @@ class _EditCarState extends State<EditCar> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           title: const Text('تعديل البيانات'),
         ),
         body: Container(

@@ -1,4 +1,8 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:project4/contents/modols.dart';
 
 class Order_Card extends StatefulWidget {
   const Order_Card({
@@ -10,40 +14,32 @@ class Order_Card extends StatefulWidget {
 }
 
 class _Car_CardState extends State<Order_Card> {
-  final TextEditingController _pNumberController = TextEditingController();
-
+  StreamSubscription? listener;
+  List<Order_detail_1> orders = [];
   @override
   void initState() {
+    listener?.cancel();
     super.initState();
-
-    // _pNumberController.text = widget.i.P_number;
+    listenTocars();
   }
 
-  // _updateCar() async {
-  //   try {
-  //     DocumentReference carRef = FirebaseFirestore.instance.collection('stock').doc();
-  //     carRef.update({
-  //       'parknumber': _pNumberController.text, //
-  //     });
-  //   } catch (error) {
-  //     print('Failed to update car: $error');
-  //   }
-  // }
-
-  // _update_Parking_N() async {
-  //   try {
-  //     DocumentReference carRef = FirebaseFirestore.instance.collection('showroom').doc(widget.i.id);
-  //     carRef.update({
-  //       'parknumber': _pNumberController.text, //
-  //     });
-  //   } catch (error) {
-  //     print('Failed to update car: $error');
-  //   }
-  // }
+  listenTocars() {
+    listener ??= FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
+      List<Order_detail_1> newList = [];
+      for (final doc in collection.docs) {
+        final order = Order_detail_1.fromMap(doc.data());
+        newList.add(order);
+      }
+      orders = newList;
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    var orders1;
     return Container(
+      alignment: Alignment.center,
       padding: const EdgeInsets.all(12),
       child: Container(
         decoration: BoxDecoration(
@@ -52,136 +48,150 @@ class _Car_CardState extends State<Order_Card> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: Car_Card_Constant.textcontainer_w,
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Car_Card_Constant.containercolor,
-                    ),
-                    child: InkWell(
-                      onTap: (() {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              actions: [
-                                Column(
-                                  children: [
-                                    TextFormField(
-                                      controller: _pNumberController, //
-                                      decoration: const InputDecoration(labelText: ' '),
-                                    ),
-                                    const SizedBox(
-                                      height: 12,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            // _update_Parking_N();
-                                            Navigator.pop(context);
-                                          },
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Container(
-                                                padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(12),
-                                                  color: Car_Card_Constant.containercolor,
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                  children: const [
-                                                    My_textstyle(
-                                                        text_1: 'حفظ التعديلات',
-                                                        text_color: Car_Card_Constant.fontcolor),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                children: const [
+                  Text('       '),
+                  Row_container_title(
+                    text_content: 'الموديل',
+                  ),
+                  Row_container_title(
+                    text_content: 'اللون',
+                  ),
+                  Row_container_title(
+                    text_content: 'نوع المركبة',
+                  ),
+                  Row_container_title(
+                    text_content: 'رقم الجوال ',
+                  ),
+                  Row_container_title(
+                    text_content: 'اسم العميل',
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              SizedBox(
+                height: 800,
+                child: ListView(
+                  children: [
+                    for (var order in orders)
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                  onTap: (() {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: const Text(
+                                            'هل تريد ازالة هذا الطلب  ',
+                                            style: TextStyle(color: Colors.white),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                              title: const Text(
-                                'ادخل رقم الموقف الجديد',
-                                style: TextStyle(color: Car_Card_Constant.containercolor),
+                                          actions: [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                TextButton(
+                                                  style: ButtonStyle(
+                                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                                      const Color.fromARGB(255, 16, 96, 130),
+                                                    ),
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    FirebaseFirestore.instance
+                                                        .collection('orders')
+                                                        .doc(order.id)
+                                                        .delete();
+                                                  },
+                                                  child: const Text('نعم'),
+                                                ),
+                                                TextButton(
+                                                  style: ButtonStyle(
+                                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                                      const Color.fromARGB(255, 16, 96, 130),
+                                                    ),
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text('لا'),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                          backgroundColor: const Color.fromARGB(255, 104, 104, 104),
+                                        );
+                                      },
+                                    );
+
+                                    setState(() {});
+                                  }),
+                                  child: const Icon(
+                                    Icons.delete,
+                                    color: Color.fromARGB(255, 181, 181, 181),
+                                  )),
+                              Row_container_Content(
+                                text_content: order.V_model, //الموديل
                               ),
-                              backgroundColor: const Color.fromARGB(255, 151, 157, 161),
-                            );
-                          },
-                        );
-                      }),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: const [
-                          My_textstyle(text_1: '', text_color: Car_Card_Constant.fontcolor2),
-                          My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
-                          My_textstyle(text_1: 'الموقف', text_color: Car_Card_Constant.fontcolor),
-                          Icon(
-                            Icons.edit,
-                            color: Car_Card_Constant.fontcolor,
+                              Row_container_Content(
+                                text_content: order.V_color, //'اللون'
+                              ),
+                              Row_container_Content(
+                                text_content: order.V_type, //'نوع المركبة'
+                              ),
+                              Row_container_Content(
+                                text_content: order.phone_number, //'رقم الجوال '
+                              ),
+                              Row_container_Content(
+                                text_content: order.customer_name, //'اسم العميل'
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 4,
                           )
                         ],
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: Car_Card_Constant.distance_between_card_parts,
-                  ),
-                  Container(
-                    width: Car_Card_Constant.textcontainer_w,
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Car_Card_Constant.containercolor,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        My_textstyle(text_1: '', text_color: Car_Card_Constant.fontcolor2),
-                        My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
-                        My_textstyle(text_1: 'اللوحة', text_color: Car_Card_Constant.fontcolor),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    width: Car_Card_Constant.distance_between_card_parts,
-                  ),
-                  Container(
-                    width: Car_Card_Constant.textcontainer_w,
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Car_Card_Constant.containercolor,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        My_textstyle(text_1: '', text_color: Car_Card_Constant.fontcolor2),
-                        My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
-                        My_textstyle(text_1: 'المالك ', text_color: Car_Card_Constant.fontcolor),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class Row_container_title extends StatelessWidget {
+  final String text_content;
+  const Row_container_title({Key? key, required this.text_content}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Car_Card_Constant.textcontainer_w,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Car_Card_Constant.containercolor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          // const My_textstyle(text_1: '', text_color: Car_Card_Constant.fontcolor2),
+          // const My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
+
+          My_textstyle(text_1: text_content, text_color: Car_Card_Constant.fontcolor),
+        ],
       ),
     );
   }
@@ -201,6 +211,20 @@ class My_textstyle extends StatelessWidget {
   }
 }
 
+class My_textstyle2 extends StatelessWidget {
+  final String text_1;
+  final Color text_color;
+  const My_textstyle2({Key? key, required this.text_1, required this.text_color}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text_1,
+      style: TextStyle(color: text_color, fontSize: Car_Card_Constant.fontsize2),
+    );
+  }
+}
+
 class Car_Card_Constant {
   static const fontcolor = Color.fromARGB(255, 181, 181, 181);
   static const fontcolor2 = Color.fromARGB(255, 185, 93, 255);
@@ -209,11 +233,37 @@ class Car_Card_Constant {
   static const double photo_Box_h = 150;
   static const double photo_Box_w = 200;
   static const double distance_between_card_parts = 12;
-  static const double textcontainer_w = 160;
+  static const double textcontainer_w = 100;
   static const double icon_container_w = 80;
   static const double textfield_container_w = 88;
-
+  static const double fontsize2 = 12;
   static const double fontsize1 = 16;
 }
 //Car_Card_Constant.containercolor
 //const Color.fromARGB(255, 151, 157, 161)
+
+class Row_container_Content extends StatelessWidget {
+  final String text_content;
+  const Row_container_Content({Key? key, required this.text_content}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Car_Card_Constant.textcontainer_w,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: const Color.fromARGB(255, 212, 212, 212),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          // const My_textstyle(text_1: '', text_color: Car_Card_Constant.fontcolor2),
+          // const My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
+
+          My_textstyle2(text_1: text_content, text_color: const Color.fromARGB(255, 0, 0, 0)),
+        ],
+      ),
+    );
+  }
+}

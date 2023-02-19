@@ -34,7 +34,6 @@ class _NewCarState extends State<NewCar> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           title: const Text('اضافة سياره'),
         ),
         body: Container(
@@ -54,6 +53,9 @@ class _NewCarState extends State<NewCar> {
                       'https://smartermsp.com/wp-content/uploads/2019/08/shutterstock_214359349.jpg',
                       fit: BoxFit.cover,
                     ),
+                  ),
+                  const SizedBox(
+                    height: 12,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
