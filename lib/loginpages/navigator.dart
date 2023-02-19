@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../contents/modols.dart';
 import '../pages/Homepage.dart';
 import '../pages/newcar.dart';
+import '../pages/orders.dart';
 import '../pages/stock.dart';
 
 class navigationBar extends StatefulWidget {
@@ -40,10 +41,10 @@ class _navigationBarState extends State<navigationBar> {
   Widget build(BuildContext context) {
     Widget body;
     var pages = [
-      const Homepage(),
+      const Homepage(), // التقارير
       const NewCar(),
       const Homepage(),
-      const Homepage(),
+      const Orders(), //'طلبات العملاء
       const Stock(),
     ];
 
