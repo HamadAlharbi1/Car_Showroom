@@ -40,12 +40,12 @@ class Data_showroom {
       sellername: 'علي',
       id: '4',
       P_number: 'N 55',
-      plate_number: 'د هـــــــــــــــ 5155',
+      plate_number: 'د ه س 5155',
       Insurance: '2023/5/10',
       licensestatus: '2023/7/15',
       Model: '2019',
       Price: '85000',
-      image: 'https://img4cdn.haraj.com.sa/userfiles22/2022-05-17/800x0-1_-GO__MTU5NjM5MDMzMDg1MTM4NzU4NjU4NA.jpg',
+      image: 'https://img4cdn.haraj.com.sa/userfiles30/2022-01-31/800x600-1_-GO__MTY0MzYxMDAxNTk5NTcwNDg0MTE1Mw.jpg',
       name: 'هايلوكس',
     ),
     Car(
@@ -57,7 +57,7 @@ class Data_showroom {
       licensestatus: '2023/10/30',
       Model: '2020',
       Price: '120000',
-      image: 'https://img4cdn.haraj.com.sa/userfiles11/2021-02-16/800x0-1_-GO__MTU5MjU0OTYyMjQyNzY5NzE5MzI5Ng.jpg',
+      image: 'https://img4cdn.haraj.com.sa/userfiles30/2023-01-24/800x600-1_-GO__MTY3NDU3MDc3NzM2OTk3MTQ5NTc1MA.jpg',
       name: 'لاندكروزر',
     ),
     Car(
@@ -69,7 +69,7 @@ class Data_showroom {
       licensestatus: '2023/9/15',
       Model: '2018',
       Price: '60000',
-      image: 'https://img4cdn.haraj.com.sa/userfiles22/2022-05-19/800x0-1_-GO__MTYyNTI5MDE3NTg5MTYyMzM5Nzk3OQ.jpg',
+      image: 'https://img4cdn.haraj.com.sa/userfiles30/2023-02-19/800x447-1_-GO__MTY3NjgzMjk1MzUzMDY4MzM0NjM2OQ.jpg',
       name: 'كورولا',
     ),
     Car(
@@ -81,20 +81,8 @@ class Data_showroom {
       licensestatus: '2023/12/1',
       Model: '2016',
       Price: '40000',
-      image: 'https://img4cdn.haraj.com.sa/userfiles22/2022-05-19/800x0-1_-GO__MTU5ODA2MDk1OTcyNTMyNjA1NjY1Ng.jpg',
-      name: 'هونداي',
-    ),
-    Car(
-      sellername: 'محمد',
-      id: '8',
-      P_number: 'K 47',
-      plate_number: 'ف ع ص 2021',
-      Insurance: '2023/10/22',
-      licensestatus: '2023/11/18',
-      Model: '2020',
-      Price: '59000',
-      image: 'https://img5cdn.haraj.com.sa/userfiles30/2023-02-15/800x515-1_-OB__MTY3NjQ3MTkyNzQ2NTQyMjUyNzI4NA.jpg',
-      name: 'كامري',
+      image: 'https://mimg6cdn.haraj.com.sa/userfiles30/2023-02-19/800x360_CFB32F61-E7E3-46AC-A255-6AB36D3ABF14.jpg',
+      name: 'النترا',
     ),
     Car(
       sellername: 'أحمد',
@@ -105,7 +93,7 @@ class Data_showroom {
       licensestatus: '2023/11/2',
       Model: '2021',
       Price: '82000',
-      image: 'https://img4cdn.haraj.com.sa/userfiles30/2023-02-15/800x515-1_-RE__MTY3NjQ3MjQ2NTI5NjQwMTI2NTY0NA.jpg',
+      image: 'https://mimg6cdn.haraj.com.sa/userfiles30/2023-1-17/963x694-1_-FBeaLu3JKMnb6D.jpg',
       name: 'أكورد',
     ),
     Car(
@@ -117,20 +105,8 @@ class Data_showroom {
       licensestatus: '2024/3/3',
       Model: '2021',
       Price: '89000',
-      image: 'https://img4cdn.haraj.com.sa/userfiles30/2023-02-15/800x515-1_-DS__MTY3NjQ3NjAzNzYyMjg0MzAzMDUwMw.jpg',
+      image: 'https://img4cdn.haraj.com.sa/userfiles30/2023-02-19/800x600-1_-GO__MTY3Njc4OTI1NzAzNjMyMjcwMjY4Mg.jpg',
       name: 'هايلكس',
-    ),
-    Car(
-      sellername: 'سامي',
-      id: '11',
-      P_number: 'H 37',
-      plate_number: 'ب د د 2022',
-      Insurance: '2023/7/7',
-      licensestatus: '2023/9/1',
-      Model: '2021',
-      Price: '73000',
-      image: 'https://img5cdn.haraj.com.sa/userfiles30/2023-02-15/800x515-1_-WQ__MTY3NjQ4NTIwMTM5NzA5NTA0MzYzNg.jpg',
-      name: 'كامري',
     ),
   ];
   static List<Icons_1> iconss = [
@@ -144,6 +120,7 @@ class Data_showroom {
         pic: 'https://image.shutterstock.com/image-vector/management-icon-teamwork-business-team-260nw-1051689107.jpg',
         description: 'description'),
   ];
+
   static List<Order_detail_1> orders1 = [
     Order_detail_1(
         id: '1',
@@ -650,6 +627,47 @@ class Data_showroom {
         V_color: 'أسود',
         V_model: '2021'),
   ];
+  static List<Saled_reports> reports1 = [
+    Saled_reports(id: '1', saler_name: "محمد الحربي", Number_of_salles: '230', s_points: '2850', Period_of_s: '3 أيام'),
+    Saled_reports(
+        id: '2', saler_name: "نورة المطيري", Number_of_salles: '380', s_points: '2700', Period_of_s: '4 أيام'),
+    Saled_reports(id: '3', saler_name: "علي الشمري", Number_of_salles: '620', s_points: '2550', Period_of_s: 'يومين'),
+    Saled_reports(
+        id: '4', saler_name: "فاطمة العتيبي", Number_of_salles: '440', s_points: '2400', Period_of_s: '3 أيام'),
+    Saled_reports(id: '5', saler_name: "أحمد الحارثي", Number_of_salles: '520', s_points: '2300', Period_of_s: 'يومين'),
+    Saled_reports(
+        id: '6', saler_name: "سارة المسعودي", Number_of_salles: '310', s_points: '2200', Period_of_s: '5 أيام'),
+    Saled_reports(
+        id: '7', saler_name: "عبدالله الجاسر", Number_of_salles: '460', s_points: '2150', Period_of_s: 'يومين'),
+    Saled_reports(
+        id: '8', saler_name: "شيماء الحمدان", Number_of_salles: '270', s_points: '2050', Period_of_s: '4 أيام'),
+    Saled_reports(id: '9', saler_name: "ياسر الخليفة", Number_of_salles: '390', s_points: '1950', Period_of_s: 'يومين'),
+    Saled_reports(
+        id: '10', saler_name: "مريم الجاسر", Number_of_salles: '510', s_points: '1900', Period_of_s: '3 أيام'),
+    Saled_reports(
+        id: '11', saler_name: "خالد المرزوقي", Number_of_salles: '580', s_points: '1800', Period_of_s: 'يومين'),
+    Saled_reports(
+        id: '12', saler_name: "ليلى العويضة", Number_of_salles: '420', s_points: '1750', Period_of_s: '4 أيام'),
+    Saled_reports(id: '13', saler_name: "حسين الفهد", Number_of_salles: '340', s_points: '1650', Period_of_s: 'يومين'),
+  ];
+  static List<Saled_reports> reports2 = [
+    Saled_reports(id: '1', saler_name: "محمد الحربي", Number_of_salles: '16', s_points: '240', Period_of_s: '3 أيام'),
+    Saled_reports(id: '2', saler_name: "سارة العتيبي", Number_of_salles: '18', s_points: '290', Period_of_s: '4 أيام'),
+    Saled_reports(id: '3', saler_name: "علي الجابر", Number_of_salles: '20', s_points: '270', Period_of_s: 'يومين'),
+    Saled_reports(
+        id: '4', saler_name: "فاطمة الشهراني", Number_of_salles: '21', s_points: '260', Period_of_s: '5 أيام'),
+    Saled_reports(id: '5', saler_name: "أحمد المطيري", Number_of_salles: '22', s_points: '250', Period_of_s: '3 أيام'),
+    Saled_reports(id: '6', saler_name: "نورة الدوسري", Number_of_salles: '25', s_points: '240', Period_of_s: 'يومين'),
+    Saled_reports(
+        id: '7', saler_name: "عبدالله الخليفة", Number_of_salles: '28', s_points: '235', Period_of_s: '4 أيام'),
+    Saled_reports(id: '8', saler_name: "شيماء القحطاني", Number_of_salles: '30', s_points: '220', Period_of_s: 'يومين'),
+    Saled_reports(id: '9', saler_name: "ياسر الحمدان", Number_of_salles: '32', s_points: '210', Period_of_s: '3 أيام'),
+    Saled_reports(id: '10', saler_name: "مريم الدخيل", Number_of_salles: '35', s_points: '200', Period_of_s: '4 أيام'),
+    Saled_reports(id: '11', saler_name: "خالد الشمري", Number_of_salles: '37', s_points: '195', Period_of_s: 'يومين'),
+    Saled_reports(id: '12', saler_name: "ليلى الجاسر", Number_of_salles: '40', s_points: '190', Period_of_s: '5 أيام'),
+    Saled_reports(id: '13', saler_name: "حسين الخالد", Number_of_salles: '42', s_points: '180', Period_of_s: '3 أيام'),
+    Saled_reports(id: '14', saler_name: "نادية الراشد", Number_of_salles: '45', s_points: '170', Period_of_s: 'يومين'),
+  ];
 }
 
 class Car {
@@ -751,3 +769,51 @@ class Order_detail_1 {
     };
   }
 }
+
+class Saled_reports {
+  String saler_name;
+  String id;
+  String Number_of_salles;
+  String s_points;
+  String Period_of_s;
+
+  Saled_reports({
+    required this.id,
+    required this.saler_name,
+    required this.Number_of_salles,
+    required this.s_points,
+    required this.Period_of_s,
+  });
+  factory Saled_reports.fromMap(Map<String, dynamic> map) {
+    return Saled_reports(
+      saler_name: map['saler_name'],
+      Number_of_salles: map['Number_of_salles'],
+      s_points: map['s_points'],
+      Period_of_s: map['Period_of_s'],
+      id: map['id'],
+    );
+  }
+  Map<String, dynamic> toMap() {
+    return {
+      'saler_name': saler_name, //
+      'Number_of_salles': Number_of_salles, //
+      'Period_of_s': Period_of_s, //
+      's_points': s_points,
+      'id': id,
+    };
+  }
+}
+
+
+// class Car_Card_Constant {
+//   static const fontcolor = Color.fromARGB(255, 181, 181, 181);
+//   static const fontcolor2 = Color.fromARGB(255, 185, 93, 255);
+//   static const containercolor = Color.fromARGB(255, 16, 96, 130);
+//   static const double photo_Box_h = 150;
+//   static const double photo_Box_w = 200;
+//   static const double distance_between_card_parts = 12;
+//   static const double textcontainer_w = 180;
+
+//   static const double fontsize1 = 16;
+// }
+

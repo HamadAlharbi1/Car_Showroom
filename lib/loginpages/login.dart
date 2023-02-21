@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project4/contents/Homepage_contents/Car_Card.dart';
 
 import '../contents/constants.dart';
-
 import 'navigator.dart';
 import 'registration.dart';
 
@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Car_Card_Constant.containercolor,
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(24),
@@ -36,11 +36,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: const Color.fromARGB(255, 23, 24, 24),
-                      ),
-                      child: const Text(
-                        'English',
-                        style: TextStyle(color: Colors.red),
+                        color: Car_Card_Constant.containercolor,
                       ),
                     ),
                   ],
@@ -80,7 +76,7 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: const Color.fromARGB(255, 23, 24, 24),
+                      color: Car_Card_Constant.containercolor,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +102,7 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: const Color.fromARGB(255, 23, 24, 24),
+                      color: Car_Card_Constant.containercolor,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -158,7 +154,7 @@ class _LoginState extends State<Login> {
                           Text(
                             'استمرار',
                             style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0), fontSize: 20, fontWeight: FontWeight.bold),
+                                color: Car_Card_Constant.containercolor, fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -186,7 +182,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: const Color.fromARGB(255, 28, 28, 28),
+                        color: Car_Card_Constant.containercolor,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

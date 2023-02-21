@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project4/contents/modols.dart';
@@ -14,23 +12,21 @@ class Order_Card extends StatefulWidget {
 }
 
 class _Car_CardState extends State<Order_Card> {
-  StreamSubscription? listener;
-  List<Order_detail_1> orders = [];
+  List<Order_detail_1> orderss = [];
   @override
   void initState() {
-    listener?.cancel();
     super.initState();
-    listenTocars();
+    listenToOrdars();
   }
 
-  listenTocars() {
-    listener ??= FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
+  listenToOrdars() {
+    FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
       List<Order_detail_1> newList = [];
       for (final doc in collection.docs) {
         final order = Order_detail_1.fromMap(doc.data());
         newList.add(order);
       }
-      orders = newList;
+      orderss = newList;
       setState(() {});
     });
   }
@@ -52,21 +48,43 @@ class _Car_CardState extends State<Order_Card> {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('       '),
-                  Row_container_title(
+                children: [
+                  InkWell(
+                    onTap: (() {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const AlertDialog(
+                            title: Text(
+                              'اضافة طلب جديد   ',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            actions: [],
+                            backgroundColor: Color.fromARGB(255, 104, 104, 104),
+                          );
+                        },
+                      );
+
+                      setState(() {});
+                    }),
+                    child: const Icon(
+                      Icons.add,
+                      color: Car_Card_Constant2.containercolor,
+                    ),
+                  ),
+                  const Row_container_title(
                     text_content: 'الموديل',
                   ),
-                  Row_container_title(
+                  const Row_container_title(
                     text_content: 'اللون',
                   ),
-                  Row_container_title(
+                  const Row_container_title(
                     text_content: 'نوع المركبة',
                   ),
-                  Row_container_title(
+                  const Row_container_title(
                     text_content: 'رقم الجوال ',
                   ),
-                  Row_container_title(
+                  const Row_container_title(
                     text_content: 'اسم العميل',
                   ),
                 ],
@@ -78,7 +96,7 @@ class _Car_CardState extends State<Order_Card> {
                 height: 800,
                 child: ListView(
                   children: [
-                    for (var order in orders)
+                    for (var order in Data_showroom.orders1)
                       Column(
                         children: [
                           Row(
@@ -178,19 +196,16 @@ class Row_container_title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Car_Card_Constant.textcontainer_w,
+      width: Car_Card_Constant2.textcontainer_w,
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Car_Card_Constant.containercolor,
+        color: Car_Card_Constant2.containercolor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // const My_textstyle(text_1: '', text_color: Car_Card_Constant.fontcolor2),
-          // const My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
-
-          My_textstyle(text_1: text_content, text_color: Car_Card_Constant.fontcolor),
+          My_textstyle(text_1: text_content, text_color: Car_Card_Constant2.fontcolor),
         ],
       ),
     );
@@ -206,26 +221,26 @@ class My_textstyle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text_1,
-      style: TextStyle(color: text_color, fontSize: Car_Card_Constant.fontsize1),
+      style: TextStyle(color: text_color, fontSize: Car_Card_Constant2.fontsize1),
     );
   }
 }
 
-class My_textstyle2 extends StatelessWidget {
+class My_textstyle22 extends StatelessWidget {
   final String text_1;
   final Color text_color;
-  const My_textstyle2({Key? key, required this.text_1, required this.text_color}) : super(key: key);
+  const My_textstyle22({Key? key, required this.text_1, required this.text_color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text_1,
-      style: TextStyle(color: text_color, fontSize: Car_Card_Constant.fontsize2),
+      style: TextStyle(color: text_color, fontSize: Car_Card_Constant2.fontsize2),
     );
   }
 }
 
-class Car_Card_Constant {
+class Car_Card_Constant2 {
   static const fontcolor = Color.fromARGB(255, 181, 181, 181);
   static const fontcolor2 = Color.fromARGB(255, 185, 93, 255);
   static const containercolor = Color.fromARGB(255, 16, 96, 130);
@@ -239,8 +254,6 @@ class Car_Card_Constant {
   static const double fontsize2 = 12;
   static const double fontsize1 = 16;
 }
-//Car_Card_Constant.containercolor
-//const Color.fromARGB(255, 151, 157, 161)
 
 class Row_container_Content extends StatelessWidget {
   final String text_content;
@@ -249,7 +262,7 @@ class Row_container_Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Car_Card_Constant.textcontainer_w,
+      width: Car_Card_Constant2.textcontainer_w,
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -261,7 +274,7 @@ class Row_container_Content extends StatelessWidget {
           // const My_textstyle(text_1: '', text_color: Car_Card_Constant.fontcolor2),
           // const My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
 
-          My_textstyle2(text_1: text_content, text_color: const Color.fromARGB(255, 0, 0, 0)),
+          My_textstyle22(text_1: text_content, text_color: const Color.fromARGB(255, 0, 0, 0)),
         ],
       ),
     );

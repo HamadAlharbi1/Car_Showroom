@@ -13,7 +13,6 @@ class NewCar extends StatefulWidget {
   const NewCar({
     Key? key,
   }) : super(key: key);
-
   @override
   State<NewCar> createState() => _NewCarState();
 }
@@ -109,25 +108,21 @@ class _NewCarState extends State<NewCar> {
                       ),
                     ],
                   ),
-                  Choose_from_the_list(
+                  Choose_from_the_list_2(
                     title_of_list: 'نوع الشركة المصنعة',
                     defult_Type: selecteditrrm,
-                    array_of_items: const ['Toyota', 'KIA', 'Honda'],
                   ),
                   const Choose_from_the_list(
                     title_of_list: ' سنة الصنع',
                     defult_Type: '2023',
-                    array_of_items: ['2023', '2022', '2021'],
                   ),
                   const Choose_from_the_list(
                     title_of_list: ' انتهاء التأمين',
                     defult_Type: '2023',
-                    array_of_items: ['2023', '2022', '2021'],
                   ),
                   const Choose_from_the_list(
                     title_of_list: ' انتهاء الاستمارة',
                     defult_Type: '2023',
-                    array_of_items: ['2023', '2024', '2025'],
                   ),
                   text_field_container(
                     Controller: _priceController,
@@ -210,7 +205,7 @@ class text_field_container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -255,19 +250,24 @@ class text_field_container extends StatelessWidget {
   }
 }
 
-class Choose_from_the_list extends StatelessWidget {
+class Choose_from_the_list extends StatefulWidget {
   final String title_of_list;
-  final List<String> array_of_items;
-  const Choose_from_the_list(
-      {Key? key, required this.defult_Type, required this.array_of_items, required this.title_of_list})
-      : super(key: key);
+
+  const Choose_from_the_list({Key? key, required this.defult_Type, required this.title_of_list}) : super(key: key);
 
   final String defult_Type;
 
   @override
+  State<Choose_from_the_list> createState() => _Choose_from_the_listState();
+}
+
+class _Choose_from_the_listState extends State<Choose_from_the_list> {
+  List<String> items = List.generate(34, (index) => (2025 - index).toString());
+  String selectedItem = '2023';
+  @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -282,45 +282,72 @@ class Choose_from_the_list extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  My_textstyle(text_1: title_of_list, text_color: Car_Card_Constant.fontcolor),
+                  My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
                 ],
               ),
             ),
           ],
         ),
-        DropdownButton(
-          items: array_of_items
-              .map((e) => DropdownMenuItem(
-                    value: e,
-                    child: Text(e),
-                  ))
-              .toList(),
-          onChanged: (value) {},
-          value: defult_Type,
+        DropdownButton<String>(
+          items: items.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          onChanged: (newValue) {
+            setState(() {
+              selectedItem = newValue!;
+            });
+          },
+          value: selectedItem,
         ),
       ],
     );
   }
 }
 
-class Choose_from_the_list2 extends StatelessWidget {
+class Choose_from_the_list_2 extends StatefulWidget {
   final String title_of_list;
-  final List<String> array_of_items;
-  final List<String> array_of_items2;
-  const Choose_from_the_list2(
-      {Key? key,
-      required this.defult_Type,
-      required this.array_of_items,
-      required this.array_of_items2,
-      required this.title_of_list})
-      : super(key: key);
+
+  const Choose_from_the_list_2({Key? key, required this.defult_Type, required this.title_of_list}) : super(key: key);
 
   final String defult_Type;
 
   @override
+  State<Choose_from_the_list_2> createState() => _Choose_from_the_listState_2();
+}
+
+class _Choose_from_the_listState_2 extends State<Choose_from_the_list_2> {
+  List<String> items = [
+    'Choose from the list',
+    'Toyota',
+    'General Motors',
+    'Ford',
+    'Honda',
+    'Nissan',
+    'Hyundai',
+    'Kia',
+    'Daimler',
+    'BMW',
+    'Tesla',
+    'Fiat Chrysler Automobiles',
+    'Renault-Nissan-Mitsubishi Alliance',
+    'SAIC Motor',
+    'Geely',
+    'Subaru',
+    'Mazda',
+    'Volvo',
+    'Porsche',
+    'Ferrari',
+    'Maserati',
+    'Lamborghini'
+  ];
+  String selectedItem = 'Choose from the list';
+  @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -335,38 +362,25 @@ class Choose_from_the_list2 extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  My_textstyle(text_1: title_of_list, text_color: Car_Card_Constant.fontcolor),
+                  My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
                 ],
               ),
             ),
           ],
         ),
-        Row(
-          children: [
-            DropdownButton(
-              items: array_of_items
-                  .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(e),
-                      ))
-                  .toList(),
-              onChanged: (value) {},
-              value: defult_Type,
-            ),
-            const SizedBox(
-              width: 4,
-            ),
-            DropdownButton(
-              items: array_of_items
-                  .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(e),
-                      ))
-                  .toList(),
-              onChanged: (value) {},
-              value: defult_Type,
-            ),
-          ],
+        DropdownButton<String>(
+          items: items.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          onChanged: (newValue) {
+            setState(() {
+              selectedItem = newValue!;
+            });
+          },
+          value: selectedItem,
         ),
       ],
     );

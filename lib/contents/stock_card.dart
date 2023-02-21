@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../pages/cardetailsss.dart';
 import '../../pages/edit_car.dart';
+import 'Homepage_contents/Car_Card.dart';
 import 'modols.dart';
 
 class Stok_card extends StatefulWidget {
@@ -255,8 +256,7 @@ class _Car_CardState extends State<Stok_card> {
                                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                   children: const [
                                                     My_textstyle(
-                                                        text_1: 'بعدين اعلمك ',
-                                                        text_color: Car_Card_Constant.fontcolor),
+                                                        text_1: 'ليس الان ', text_color: Car_Card_Constant.fontcolor),
                                                   ],
                                                 ),
                                               ),
@@ -319,7 +319,7 @@ class _Car_CardState extends State<Stok_card> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: const [
-                            My_textstyle(text_1: 'ارسال الى صالة العرض', text_color: Car_Card_Constant.fontcolor),
+                            My_textstyle(text_1: ' الى صالة العرض', text_color: Car_Card_Constant.fontcolor),
                           ],
                         ),
                       ),
@@ -348,17 +348,3 @@ class My_textstyle extends StatelessWidget {
     );
   }
 }
-
-class Car_Card_Constant {
-  static const fontcolor = Color.fromARGB(255, 181, 181, 181);
-  static const fontcolor2 = Color.fromARGB(255, 185, 93, 255);
-  static const containercolor = Color.fromARGB(255, 16, 96, 130);
-  static const double photo_Box_h = 150;
-  static const double photo_Box_w = 200;
-  static const double distance_between_card_parts = 12;
-  static const double textcontainer_w = 180;
-
-  static const double fontsize1 = 16;
-}
-//Car_Card_Constant.containercolor
-//

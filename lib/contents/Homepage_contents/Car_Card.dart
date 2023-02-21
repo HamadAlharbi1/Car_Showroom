@@ -354,8 +354,7 @@ class _Car_CardState extends State<Car_Card> {
                                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                   children: const [
                                                     My_textstyle(
-                                                        text_1: 'بعدين اعلمك ',
-                                                        text_color: Car_Card_Constant.fontcolor),
+                                                        text_1: 'ليس الان ', text_color: Car_Card_Constant.fontcolor),
                                                   ],
                                                 ),
                                               ),
@@ -443,14 +442,35 @@ class My_textstyle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text_1,
-      style: TextStyle(color: text_color, fontSize: Car_Card_Constant.fontsize1),
+      style: TextStyle(
+        color: text_color,
+        fontSize: Car_Card_Constant.fontsize1,
+      ),
+    );
+  }
+}
+
+class My_textstyle2 extends StatelessWidget {
+  final String text_1;
+  final Color text_color;
+  const My_textstyle2({
+    Key? key,
+    required this.text_1,
+    required this.text_color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text_1,
+      style: TextStyle(color: text_color, fontSize: 18, fontWeight: FontWeight.bold),
     );
   }
 }
 
 class Car_Card_Constant {
   static const fontcolor = Color.fromARGB(255, 181, 181, 181);
-  static const fontcolor2 = Color.fromARGB(255, 185, 93, 255);
+  static const fontcolor2 = Color.fromARGB(255, 203, 255, 168);
   static const containercolor = Color.fromARGB(255, 16, 96, 130);
   static const title_container_color = Color.fromARGB(255, 151, 157, 161);
   static const double photo_Box_h = 150;
@@ -458,8 +478,8 @@ class Car_Card_Constant {
   static const double distance_between_card_parts = 12;
   static const double textcontainer_w = 160;
   static const double icon_container_w = 80;
+  static const double report_container_w = 120;
   static const double textfield_container_w = 88;
-
   static const double fontsize1 = 16;
 }
 //Car_Card_Constant.containercolor

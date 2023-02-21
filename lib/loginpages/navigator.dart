@@ -5,6 +5,7 @@ import '../contents/modols.dart';
 import '../pages/Homepage.dart';
 import '../pages/newcar.dart';
 import '../pages/orders.dart';
+import '../pages/report.dart';
 import '../pages/stock.dart';
 
 class navigationBar extends StatefulWidget {
@@ -34,18 +35,21 @@ class _navigationBarState extends State<navigationBar> {
     });
   }
 
-  var currentIndex = 2;
+  var currentIndex = 3;
   static const MyIconcolor = Colors.white38;
 
   @override
   Widget build(BuildContext context) {
     Widget body;
     var pages = [
-      const Homepage(), // التقارير
-      const NewCar(),
-      const Homepage(),
+      const Report_page(), // التقارير
+
+      const Report_page(), // التقارير
+      const NewCar(), // اضافة سيارة
+      const Homepage(), // صالة العرض الرئيسيه
       const Orders(), //'طلبات العملاء
-      const Stock(),
+      const Stock(), // المستودع
+      const Report_page(), // التقارير
     ];
 
     return Scaffold(
@@ -64,10 +68,12 @@ class _navigationBarState extends State<navigationBar> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.report), label: 'التقارير '),
+          BottomNavigationBarItem(icon: Icon(Icons.report), label: 'التقارير '),
           BottomNavigationBarItem(icon: Icon(Icons.add), label: 'اضافة سيارة '),
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'الصالة الرئيسيه'),
           BottomNavigationBarItem(icon: Icon(Icons.request_page), label: 'طلبات العملاء '),
           BottomNavigationBarItem(icon: Icon(Icons.warehouse), label: 'المستودع '),
+          BottomNavigationBarItem(icon: Icon(Icons.report), label: 'التقارير '),
         ],
         onTap: (newIndex) {
           currentIndex = newIndex;

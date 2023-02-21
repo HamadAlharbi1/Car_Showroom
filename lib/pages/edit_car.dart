@@ -90,35 +90,18 @@ class _EditCarState extends State<EditCar> {
                     const SizedBox(
                       height: 75,
                     ),
-                    Choose_from_the_list(
-                      title_of_list: 'نوع الشركة المصنعة',
-                      defult_Type: selecteditrrm,
-                      array_of_items: const ['Toyota', 'KIA', 'Honda'],
-                    ),
-                    const Choose_from_the_list(
-                      title_of_list: ' سنة الصنع',
-                      defult_Type: '2023',
-                      array_of_items: ['2023', '2022', '2021'],
-                    ),
                     const Choose_from_the_list(
                       title_of_list: ' انتهاء التأمين',
                       defult_Type: '2023',
-                      array_of_items: ['2023', '2022', '2021'],
                     ),
                     const Choose_from_the_list(
                       title_of_list: ' انتهاء الاستمارة',
                       defult_Type: '2023',
-                      array_of_items: ['2023', '2024', '2025'],
                     ),
                     text_field_container(
                       Controller: _priceController,
                       textfield_content: 'السعر',
                       title_for_textfield: 'سعرالمركبة',
-                    ),
-                    text_field_container(
-                      Controller: _pNumberController,
-                      textfield_content: 'رقم اللوحة',
-                      title_for_textfield: 'ادخل لوحة المركبة',
                     ),
                     text_field_container(
                       Controller: _parkingNumberController,
@@ -150,7 +133,7 @@ class _EditCarState extends State<EditCar> {
                           padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: const Color.fromARGB(255, 50, 16, 130),
+                            color: Car_Card_Constant.containercolor,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,

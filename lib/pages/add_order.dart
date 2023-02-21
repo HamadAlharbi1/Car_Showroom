@@ -33,9 +33,17 @@ class _New_OrderState extends State<New_Order> {
         ),
         body: Container(
           padding: const EdgeInsets.all(16),
-          child: Row(
+          child: Column(
             children: [
-              add_oreder(parkingNumberController: _parkingNumberController, pNumberController: _pNumberController, insuranceController: _insuranceController, licenseStatusController: _licenseStatusController, modelController: _modelController, priceController: _priceController, nameController: _nameController, selecteditrrm: selecteditrrm),
+              add_oreder(
+                  parkingNumberController: _parkingNumberController,
+                  pNumberController: _pNumberController,
+                  insuranceController: _insuranceController,
+                  licenseStatusController: _licenseStatusController,
+                  modelController: _modelController,
+                  priceController: _priceController,
+                  nameController: _nameController,
+                  selecteditrrm: selecteditrrm),
             ],
           ),
         ));
@@ -53,7 +61,14 @@ class add_oreder extends StatelessWidget {
     required TextEditingController priceController,
     required TextEditingController nameController,
     required this.selecteditrrm,
-  }) : _parkingNumberController = parkingNumberController, _pNumberController = pNumberController, _insuranceController = insuranceController, _licenseStatusController = licenseStatusController, _modelController = modelController, _priceController = priceController, _nameController = nameController, super(key: key);
+  })  : _parkingNumberController = parkingNumberController,
+        _pNumberController = pNumberController,
+        _insuranceController = insuranceController,
+        _licenseStatusController = licenseStatusController,
+        _modelController = modelController,
+        _priceController = priceController,
+        _nameController = nameController,
+        super(key: key);
 
   final TextEditingController _parkingNumberController;
   final TextEditingController _pNumberController;

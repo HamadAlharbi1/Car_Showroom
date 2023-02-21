@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../contents/Homepage_contents/Order_Card.dart';
 import '../contents/modols.dart';
-import 'add_order.dart';
 
 class Orders extends StatefulWidget {
   const Orders({super.key});
@@ -24,7 +23,7 @@ class _HomepageState extends State<Orders> {
   }
 
   listenTocars() {
-    listener ??= FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
+    FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
       List<Order_detail_1> newList = [];
       for (final doc in collection.docs) {
         final order = Order_detail_1.fromMap(doc.data());
@@ -78,8 +77,8 @@ class _HomepageState extends State<Orders> {
             Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              height: Car_Card_Constant.photo_Box_h,
-              width: Car_Card_Constant.photo_Box_w,
+              height: Car_Card_Constant2.photo_Box_h,
+              width: Car_Card_Constant2.photo_Box_w,
               child: Image.network(
                 'https://i2.wp.com/tradesmartonline.in/blog/wp-content/uploads/2017/07/buy-a-car.png?fit=759%2C422&ssl=1',
                 fit: BoxFit.cover,
@@ -89,15 +88,6 @@ class _HomepageState extends State<Orders> {
               height: 24,
             ),
             const Order_Card(),
-            add_oreder(
-                parkingNumberController: _parkingNumberController,
-                pNumberController: _pNumberController,
-                insuranceController: _insuranceController,
-                licenseStatusController: _licenseStatusController,
-                modelController: _modelController,
-                priceController: _priceController,
-                nameController: _nameController,
-                selecteditrrm: selecteditrrm),
           ],
         ),
       )),
