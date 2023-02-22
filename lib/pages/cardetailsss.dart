@@ -97,11 +97,6 @@ class _CardetailsState extends State<Cardetailss> {
                   ' ${widget.car.P_number}رقم الموقف:',
                   style: const TextStyle(fontSize: 20),
                 ),
-
-                // Text(
-                //   'License status: ${widget.car.licensestatus}',
-                //   style: Theme.of(context).textTheme.subtitle1,
-                // ),
               ],
             ),
           ),

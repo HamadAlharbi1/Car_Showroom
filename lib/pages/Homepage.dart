@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../contents/Homepage_contents/Car_Card.dart';
+import '../Homepage_contents/Car_Card.dart';
+import '../contents/constants.dart';
 import '../contents/modols.dart';
-import 'newcar.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -14,6 +14,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  int count = 0;
   StreamSubscription? listener;
   List<Car> cars = [];
   @override
@@ -21,10 +22,23 @@ class _HomepageState extends State<Homepage> {
     listener?.cancel();
     super.initState();
     listenTocars();
+    listenTolength();
+  }
+
+  listenTolength() {
+    FirebaseFirestore.instance.collection('showroom').snapshots().listen((collection) {
+      setState(() {
+        count = collection.size;
+      });
+    });
   }
 
   listenTocars() {
-    listener ??= FirebaseFirestore.instance.collection('showroom').snapshots().listen((collection) {
+    listener ??= FirebaseFirestore.instance
+        .collection('showroom')
+        .orderBy('Model', descending: true)
+        .snapshots()
+        .listen((collection) {
       List<Car> newList = [];
       for (final doc in collection.docs) {
         final car = Car.fromMap(doc.data());
@@ -39,27 +53,33 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: SizedBox(
-        height: 900,
-        child: ListView(
-          children: [
-            Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              height: Car_Card_Constant.photo_Box_h,
-              width: Car_Card_Constant.photo_Box_w,
-              child: Image.network(
-                'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/25ec6b15678641.5629596a8daec.jpg',
-                fit: BoxFit.cover,
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: 900,
+          child: ListView(
+            children: [
+              Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                height: Car_Card_Constant.photo_Box_h,
+                width: Car_Card_Constant.photo_Box_w,
+                child: Image.network(
+                  'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/25ec6b15678641.5629596a8daec.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-
-            const SizedBox(
-              height: 24,
-            ),
-            // const SizedBox(height: 60, child: h_card()),
-            for (var i in cars) Car_Card(i: i)
-          ],
+              Text(
+                '$count',
+                style: const TextStyle(fontSize: 24),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              // const SizedBox(height: 60, child: h_card()),
+              for (var i in cars) Car_Card(i: i)
+            ],
+          ),
         ),
       )),
     );

@@ -1,4 +1,4 @@
-class Data_showroom {
+class Data {
   static List<Car> showroom1 = [
     Car(
       sellername: 'Mohammed',
@@ -803,17 +803,3 @@ class Saled_reports {
     };
   }
 }
-
-
-// class Car_Card_Constant {
-//   static const fontcolor = Color.fromARGB(255, 181, 181, 181);
-//   static const fontcolor2 = Color.fromARGB(255, 185, 93, 255);
-//   static const containercolor = Color.fromARGB(255, 16, 96, 130);
-//   static const double photo_Box_h = 150;
-//   static const double photo_Box_w = 200;
-//   static const double distance_between_card_parts = 12;
-//   static const double textcontainer_w = 180;
-
-//   static const double fontsize1 = 16;
-// }
-

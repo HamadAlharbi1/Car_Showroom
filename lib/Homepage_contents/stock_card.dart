@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../pages/cardetailsss.dart';
-import '../../pages/edit_car.dart';
-import 'Homepage_contents/Car_Card.dart';
-import 'modols.dart';
+import '../../../pages/cardetailsss.dart';
+import '../../../pages/edit_car.dart';
+import '../contents/constants.dart';
+import '../contents/modols.dart';
+import 'Car_Card.dart';
 
 class Stok_card extends StatefulWidget {
   const Stok_card({
@@ -331,20 +332,6 @@ class _Car_CardState extends State<Stok_card> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class My_textstyle extends StatelessWidget {
-  final String text_1;
-  final Color text_color;
-  const My_textstyle({Key? key, required this.text_1, required this.text_color}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text_1,
-      style: TextStyle(color: text_color, fontSize: Car_Card_Constant.fontsize1),
     );
   }
 }

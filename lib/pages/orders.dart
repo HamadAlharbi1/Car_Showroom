@@ -3,16 +3,16 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../contents/Homepage_contents/Order_Card.dart';
+import '../contents/constants.dart';
 import '../contents/modols.dart';
 
 class Orders extends StatefulWidget {
-  const Orders({super.key});
+  const Orders({Key? key}) : super(key: key);
   @override
-  State<Orders> createState() => _HomepageState();
+  State<Orders> createState() => _OrdersState();
 }
 
-class _HomepageState extends State<Orders> {
+class _OrdersState extends State<Orders> {
   StreamSubscription? listener;
   List<Order_detail_1> orders = [];
   @override
@@ -22,12 +22,12 @@ class _HomepageState extends State<Orders> {
     listenTocars();
   }
 
-  listenTocars() {
-    FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
+  void listenTocars() {
+    listener ??= FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
       List<Order_detail_1> newList = [];
       for (final doc in collection.docs) {
-        final order = Order_detail_1.fromMap(doc.data());
-        newList.add(order);
+        final car = Order_detail_1.fromMap(doc.data());
+        newList.add(car);
       }
       orders = newList;
       setState(() {});
@@ -43,26 +43,6 @@ class _HomepageState extends State<Orders> {
   final TextEditingController _parkingNumberController = TextEditingController();
   final TextEditingController _licenseStatusController = TextEditingController();
 
-  // List<Order> orderss = [];
-  // @override
-  // void initState() {
-  //   listener?.cancel();
-  //   super.initState();
-  //   listenToorderss();
-  // }
-  // listenToorderss() {
-  //   listener ??= FirebaseFirestore.instance.collection('showroom').snapshots().listen((collection) {
-  //     List<Orders> newList = [];
-  //     for (final doc in collection.docs) {
-  //       final orders = Orders.fromMap(doc.data());
-  //       newList.add(orders);
-  //     }
-  //     orderss = newList;
-  //     setState(() {});
-  //   });
-  // }
-  // bool isHovering = false;
-  // bool isHovering1 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,17 +57,169 @@ class _HomepageState extends State<Orders> {
             Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              height: Car_Card_Constant2.photo_Box_h,
-              width: Car_Card_Constant2.photo_Box_w,
+              height: Car_Card_Constant.photo_Box_h,
+              width: Car_Card_Constant.photo_Box_w,
               child: Image.network(
-                'https://i2.wp.com/tradesmartonline.in/blog/wp-content/uploads/2017/07/buy-a-car.png?fit=759%2C422&ssl=1',
+                'https://acena.com/wp-content/uploads/2015/01/Customer-on-Hold-For-Long-Periods-of-Time.jpg',
                 fit: BoxFit.cover,
               ),
             ),
             const SizedBox(
               height: 24,
             ),
-            const Order_Card(),
+            // const Order_Card(),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(12),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: const Color.fromARGB(61, 181, 181, 181),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: (() {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return const AlertDialog(
+                                    title: Text(
+                                      'اضافة طلب جديد   ',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    actions: [],
+                                    backgroundColor: Color.fromARGB(255, 104, 104, 104),
+                                  );
+                                },
+                              );
+
+                              setState(() {});
+                            }),
+                            child: const Icon(
+                              Icons.add,
+                              color: Car_Card_Constant.containercolor,
+                            ),
+                          ),
+                          const Row_container_title(
+                            text_content: 'الموديل',
+                          ),
+                          const Row_container_title(
+                            text_content: 'اللون',
+                          ),
+                          const Row_container_title(
+                            text_content: 'نوع المركبة',
+                          ),
+                          const Row_container_title(
+                            text_content: 'رقم الجوال ',
+                          ),
+                          const Row_container_title(
+                            text_content: 'اسم العميل',
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      SizedBox(
+                        height: 800,
+                        child: ListView(
+                          children: [
+                            for (final order in Data.orders1)
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                          onTap: (() {
+                                            showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                    'هل تريد ازالة هذا الطلب  ',
+                                                    style: TextStyle(color: Colors.white),
+                                                  ),
+                                                  actions: [
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        TextButton(
+                                                          style: ButtonStyle(
+                                                            backgroundColor: MaterialStateProperty.all<Color>(
+                                                              const Color.fromARGB(255, 16, 96, 130),
+                                                            ),
+                                                          ),
+                                                          onPressed: () {
+                                                            Navigator.pop(context);
+                                                            FirebaseFirestore.instance
+                                                                .collection('orders')
+                                                                .doc(order.id)
+                                                                .delete();
+                                                          },
+                                                          child: const Text('نعم'),
+                                                        ),
+                                                        TextButton(
+                                                          style: ButtonStyle(
+                                                            backgroundColor: MaterialStateProperty.all<Color>(
+                                                              const Color.fromARGB(255, 16, 96, 130),
+                                                            ),
+                                                          ),
+                                                          onPressed: () {
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child: const Text('لا'),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                  backgroundColor: const Color.fromARGB(255, 104, 104, 104),
+                                                );
+                                              },
+                                            );
+
+                                            setState(() {});
+                                          }),
+                                          child: const Icon(
+                                            Icons.delete,
+                                            color: Color.fromARGB(255, 181, 181, 181),
+                                          )),
+                                      Row_container_Content(
+                                        text_content: order.V_model, //الموديل
+                                      ),
+                                      Row_container_Content(
+                                        text_content: order.V_color, //'اللون'
+                                      ),
+                                      Row_container_Content(
+                                        text_content: order.V_type, //'نوع المركبة'
+                                      ),
+                                      Row_container_Content(
+                                        text_content: order.phone_number, //'رقم الجوال '
+                                      ),
+                                      Row_container_Content(
+                                        text_content: order.customer_name, //'اسم العميل'
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  )
+                                ],
+                              ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       )),

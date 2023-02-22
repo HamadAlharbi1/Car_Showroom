@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:project4/Homepage_contents/stock_card.dart';
+import 'package:project4/contents/constants.dart';
 
-import '../contents/Homepage_contents/Car_Card.dart';
 import '../contents/modols.dart';
-import '../contents/stock_card.dart';
+
 import 'newcar.dart';
 
 class Stock extends StatefulWidget {
