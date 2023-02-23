@@ -119,7 +119,7 @@ class _Car_CardState extends State<Car_Card> {
                         'ادخل رقم الموقف الجديد',
                         style: TextStyle(color: Car_Card_Constant.containercolor),
                       ),
-                      backgroundColor: const Color.fromARGB(255, 151, 157, 161),
+                      backgroundColor: Car_Card_Constant.title_container_color,
                     );
                   },
                 );
@@ -220,6 +220,15 @@ class _Car_CardState extends State<Car_Card> {
                           const SizedBox(
                             width: 10,
                           ),
+                          /**
+ *  onPressed: () {
+     Navigator.pop(context);
+                                      FirebaseFirestore.instance.collection('showroom').doc(widget.car.id).delete();
+                                  
+
+    ' هل تم بيع هذه السياره ؟ ',
+                                
+ */
                           InkWell(
                             onTap: () {
                               showDialog(
@@ -242,7 +251,7 @@ class _Car_CardState extends State<Car_Card> {
                                             },
                                             child: Container(
                                                 alignment: Alignment.center,
-                                                width: Car_Card_Constant.icon_container_w,
+                                                width: Car_Card_Constant.showdialog_bottom_w,
                                                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                                 decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(12),
@@ -259,7 +268,7 @@ class _Car_CardState extends State<Car_Card> {
                                             },
                                             child: Container(
                                                 alignment: Alignment.center,
-                                                width: Car_Card_Constant.icon_container_w,
+                                                width: Car_Card_Constant.showdialog_bottom_w,
                                                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                                 decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(12),

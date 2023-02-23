@@ -86,7 +86,7 @@ class _HomepageState extends State<Stock> {
                   imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
                 ),
                 head_title_icon(
-                  container_action: 'عدد ',
+                  container_action: ' عدد المركبات  ',
                   available_P: count,
                   imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
                 ),

@@ -16,7 +16,6 @@ class navigationBar extends StatefulWidget {
 
 class _navigationBarState extends State<navigationBar> {
   var currentIndex = 0;
-  static const MyIconcolor = Colors.white38;
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +52,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'التقارير',
-                        text_color: MyIconcolor,
+                        text_color: Car_Card_Constant.MyIconcolor,
                       ),
                     ),
+                    selected: currentIndex == 0,
+                    selectedTileColor: Car_Card_Constant.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 0;
@@ -68,9 +69,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'التقارير',
-                        text_color: MyIconcolor,
+                        text_color: Car_Card_Constant.MyIconcolor,
                       ),
                     ),
+                    selected: currentIndex == 1,
+                    selectedTileColor: Car_Card_Constant.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 1;
@@ -83,9 +86,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'اضافة سيارة',
-                        text_color: MyIconcolor,
+                        text_color: Car_Card_Constant.MyIconcolor,
                       ),
                     ),
+                    selected: currentIndex == 2,
+                    selectedTileColor: Car_Card_Constant.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 2;
@@ -98,9 +103,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'الصفحة الرئيسية',
-                        text_color: MyIconcolor,
+                        text_color: Car_Card_Constant.MyIconcolor,
                       ),
                     ),
+                    selected: currentIndex == 3,
+                    selectedTileColor: Car_Card_Constant.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 3;
@@ -113,9 +120,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'طلبات العملاء',
-                        text_color: MyIconcolor,
+                        text_color: Car_Card_Constant.MyIconcolor,
                       ),
                     ),
+                    selected: currentIndex == 4,
+                    selectedTileColor: Car_Card_Constant.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 4;
@@ -128,9 +137,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'المستودع',
-                        text_color: MyIconcolor,
+                        text_color: Car_Card_Constant.MyIconcolor,
                       ),
                     ),
+                    selected: currentIndex == 5,
+                    selectedTileColor: Car_Card_Constant.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 5;
@@ -143,9 +154,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'التقارير',
-                        text_color: MyIconcolor,
+                        text_color: Car_Card_Constant.MyIconcolor,
                       ),
                     ),
+                    selected: currentIndex == 6,
+                    selectedTileColor: Car_Card_Constant.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 6;

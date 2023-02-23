@@ -18,6 +18,7 @@ class NewCar extends StatefulWidget {
 }
 
 class _NewCarState extends State<NewCar> {
+  late String selectedItem = 'Choose from the list';
   final selecteditrrm = 'Toyota';
   final String A11 = 'الاستمارة';
   final TextEditingController _nameController = TextEditingController();
@@ -135,6 +136,11 @@ class _NewCarState extends State<NewCar> {
                     title_for_textfield: 'ادخل لوحة المركبة',
                   ),
                   text_field_container(
+                    Controller: _nameController,
+                    textfield_content: 'المالك',
+                    title_for_textfield: 'ادخل اسم المالك',
+                  ),
+                  text_field_container(
                     Controller: _parkingNumberController,
                     textfield_content: 'رقم موقف السيارة',
                     title_for_textfield: 'ادخل رقم الموقف',
@@ -146,17 +152,17 @@ class _NewCarState extends State<NewCar> {
 // Create a new document in the collection
                       collectionRef
                           .add({
-                            'sellername': '',
+                            'sellername': _nameController.text,
                             'id': '',
                             'parknumber': _parkingNumberController.text,
                             'plate_number': _pNumberController.text,
-                            'Insurance': _insuranceController.text,
-                            'licensestatus': _licenseStatusController.text,
-                            'Model': _modelController.text,
+                            'Insurance': '2024',
+                            'licensestatus': '2025',
+                            'Model': '2023',
                             'Price': _priceController.text,
                             'image':
                                 'https://img4cdn.haraj.com.sa/userfiles30/2023-02-15/800x515-1_-GO__MTY3NjQ0NTk5NDEwMDA2MTI2NTM3Mg.jpg',
-                            'name': _nameController.text,
+                            'name': 'Toyota',
                           })
                           .then((value) => Navigator.push(
                                 context,
@@ -165,6 +171,14 @@ class _NewCarState extends State<NewCar> {
                                 ),
                               ))
                           .catchError((error) => print('Failed to add document: $error'));
+
+                      // try {
+                      //   FirebaseFirestore.instance.collection('showroom').add({'Model': selectedItem});
+                      //   // Show a success message to the user here
+                      // } catch (error) {
+                      //   // Show an error message to the user here
+                      //   print('Error adding selected value to Firestore: $error');
+                      // }
                     },
                     child: Container(
                       width: Car_Card_Constant.textcontainer_w,
@@ -265,7 +279,7 @@ class Choose_from_the_list extends StatefulWidget {
 }
 
 class _Choose_from_the_listState extends State<Choose_from_the_list> {
-  List<String> items = List.generate(34, (index) => (2025 - index).toString());
+  List<String> items = List.generate(10, (index) => (2025 - index).toString());
   String selectedItem = '2023';
   @override
   Widget build(BuildContext context) {

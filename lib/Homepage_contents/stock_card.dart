@@ -5,7 +5,6 @@ import '../../../pages/cardetailsss.dart';
 import '../../../pages/edit_car.dart';
 import '../contents/constants.dart';
 import '../contents/modols.dart';
-import 'Car_Card.dart';
 
 class Stok_card extends StatefulWidget {
   const Stok_card({
@@ -137,40 +136,59 @@ class _Car_CardState extends State<Stok_card> {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return SizedBox(
-                              height: 300,
-                              child: AlertDialog(
-                                actions: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => EditCar(
-                                                      car: widget.i,
-                                                    )),
-                                          );
-                                        },
-                                        child: const Text('نعم'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text('لا'),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                                title: const Text(
-                                  ' هل تريد تعديل معلومات المركبة ',
-                                  style: TextStyle(color: Colors.white),
+                            return AlertDialog(
+                              actions: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => EditCar(
+                                                    car: widget.i,
+                                                  )),
+                                        );
+                                      },
+                                      child: Container(
+                                          alignment: Alignment.center,
+                                          width: Car_Card_Constant.showdialog_bottom_w,
+                                          padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(12),
+                                            color: Car_Card_Constant.containercolor,
+                                          ),
+                                          child: const My_textstyle(
+                                            text_1: 'نعم',
+                                            text_color: Car_Card_Constant.title_container_color,
+                                          )),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Container(
+                                          alignment: Alignment.center,
+                                          width: Car_Card_Constant.showdialog_bottom_w,
+                                          padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(12),
+                                            color: Car_Card_Constant.containercolor,
+                                          ),
+                                          child: const My_textstyle(
+                                            text_1: 'لا',
+                                            text_color: Car_Card_Constant.title_container_color,
+                                          )),
+                                    ),
+                                  ],
                                 ),
-                                backgroundColor: const Color.fromARGB(255, 0, 32, 63),
+                              ],
+                              title: const Text(
+                                ' هل تريد تعديل معلومات المركبة ',
+                                style: TextStyle(color: Car_Card_Constant.containercolor),
                               ),
+                              backgroundColor: Car_Card_Constant.title_container_color,
                             );
                           },
                         );

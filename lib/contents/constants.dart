@@ -7,11 +7,14 @@ class Car_Card_Constant {
   static const fontcolor2 = Color.fromARGB(255, 254, 254, 254);
   static const containercolor = Color.fromARGB(255, 63, 108, 147);
   static const title_container_color = Color.fromARGB(255, 151, 157, 161);
+  static const MyIconcolor = Color.fromARGB(194, 255, 255, 255);
+  static const SelectedColor = Color.fromARGB(255, 0, 48, 87);
   static const double photo_Box_h = 150;
-  static const double photo_Box_w = 200;
+  static const double photo_Box_w = 450;
   static const double distance_between_card_parts = 12;
   static const double textcontainer_w = 160;
   static const double icon_container_w = 35;
+  static const double showdialog_bottom_w = 88;
   static const double report_container_w = 120;
   static const double textfield_container_w = 88;
   static const double parking_container_h = 60;
@@ -24,8 +27,6 @@ class Car_Card_Constant {
   static const double hight16 = 16;
   static const dynamic textstyle = TextStyle(color: Colors.white);
 }
-
-
 
 class My_textstyle extends StatelessWidget {
   final double My_fontsize;
@@ -50,7 +51,6 @@ class My_textstyle extends StatelessWidget {
     );
   }
 }
-
 
 class My_textstyle2 extends StatelessWidget {
   final String text_1;

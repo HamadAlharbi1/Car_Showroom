@@ -43,7 +43,6 @@ class _EditCarState extends State<EditCar> {
   _updateCar() async {
     try {
       DocumentReference carRef = FirebaseFirestore.instance.collection('showroom').doc(widget.car.id);
-
       carRef.update({
         'name': _nameController.text, //
         'sellername': _sellernameController.text, //
@@ -148,41 +147,59 @@ class _EditCarState extends State<EditCar> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: const Text(
-                              ' هل تم بيع هذه السياره ؟ ',
-                              style: TextStyle(color: Colors.white),
-                            ),
                             actions: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  TextButton(
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all<Color>(
-                                        const Color.fromARGB(255, 130, 16, 16),
-                                      ),
-                                    ),
-                                    onPressed: () {
+                                  InkWell(
+                                    onTap: () {
                                       Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const navigationBar(),
+                                        ),
+                                      );
                                       FirebaseFirestore.instance.collection('showroom').doc(widget.car.id).delete();
                                     },
-                                    child: const Text('نعم'),
+                                    child: Container(
+                                        alignment: Alignment.center,
+                                        width: Car_Card_Constant.showdialog_bottom_w,
+                                        padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(12),
+                                          color: Car_Card_Constant.containercolor,
+                                        ),
+                                        child: const My_textstyle(
+                                          text_1: 'نعم',
+                                          text_color: Car_Card_Constant.title_container_color,
+                                        )),
                                   ),
-                                  TextButton(
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all<Color>(
-                                        const Color.fromARGB(255, 130, 16, 16),
-                                      ),
-                                    ),
-                                    onPressed: () {
+                                  InkWell(
+                                    onTap: () {
                                       Navigator.pop(context);
                                     },
-                                    child: const Text('لا'),
+                                    child: Container(
+                                        alignment: Alignment.center,
+                                        width: Car_Card_Constant.showdialog_bottom_w,
+                                        padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(12),
+                                          color: Car_Card_Constant.containercolor,
+                                        ),
+                                        child: const My_textstyle(
+                                          text_1: 'لا',
+                                          text_color: Car_Card_Constant.title_container_color,
+                                        )),
                                   ),
                                 ],
                               ),
                             ],
-                            backgroundColor: const Color.fromARGB(255, 64, 64, 64),
+                            title: const Text(
+                              ' هل تريد ازالة هذه السيارة ؟ ',
+                              style: TextStyle(color: Car_Card_Constant.containercolor),
+                            ),
+                            backgroundColor: Car_Card_Constant.title_container_color,
                           );
                         },
                       );

@@ -125,9 +125,14 @@ class head_title_icon extends StatelessWidget {
             container_title: '$available_P',
             container_action: container_action,
           ),
-          Image.network(
-            imageUrl,
-            height: 45,
+          Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(45)),
+            child: Image.network(
+              imageUrl,
+              height: 45,
+              fit: BoxFit.cover,
+            ),
           )
         ],
       ),

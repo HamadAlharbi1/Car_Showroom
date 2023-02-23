@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../contents/constants.dart';
 import '../contents/modols.dart';
+import 'Homepage.dart';
 
 class Orders extends StatefulWidget {
   const Orders({Key? key}) : super(key: key);
@@ -13,6 +14,9 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
+  int count = 0;
+  int total_P = 20;
+  int get available_P => total_P - count - 2;
   StreamSubscription? listener;
   List<Order_detail_1> orders = [];
   @override
@@ -20,6 +24,16 @@ class _OrdersState extends State<Orders> {
     listener?.cancel();
     super.initState();
     listenTocars();
+
+    listenTolength();
+  }
+
+  listenTolength() {
+    FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
+      setState(() {
+        count = collection.size;
+      });
+    });
   }
 
   listenTocars() {
@@ -68,6 +82,28 @@ class _OrdersState extends State<Orders> {
               height: 24,
             ),
             // const Order_Card(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                head_title_icon(
+                  container_action: 'الطلبات الملغية',
+                  available_P: available_P,
+                  imageUrl: 'https://thumbs.dreamstime.com/b/cancel-agreement-icon-189052111.jpg',
+                ),
+                head_title_icon(
+                  container_action: 'قيد التنفيذ',
+                  available_P: total_P,
+                  imageUrl: 'https://cdn-icons-png.flaticon.com/512/5038/5038308.png',
+                ),
+                head_title_icon(
+                  container_action: '  عدد الطلبات ',
+                  available_P: count,
+                  imageUrl:
+                      'https://image.shutterstock.com/image-vector/count-down-icon-isolated-on-260nw-265594496.jpg',
+                ),
+              ],
+            ),
+
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(12),
@@ -172,46 +208,56 @@ class _ordercardState extends State<ordercard> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: const Text(
-                          'هل تريد ازالة هذا الطلب  ',
-                          style: TextStyle(color: Colors.white),
-                        ),
                         actions: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                    const Color.fromARGB(255, 16, 96, 130),
-                                  ),
-                                ),
-                                onPressed: () {
+                              InkWell(
+                                onTap: () {
                                   Navigator.pop(context);
                                   FirebaseFirestore.instance.collection('orders').doc(widget.order.id).delete();
                                 },
-                                child: const Text('نعم'),
+                                child: Container(
+                                    alignment: Alignment.center,
+                                    width: Car_Card_Constant.showdialog_bottom_w,
+                                    padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: Car_Card_Constant.containercolor,
+                                    ),
+                                    child: const My_textstyle(
+                                      text_1: 'نعم',
+                                      text_color: Car_Card_Constant.title_container_color,
+                                    )),
                               ),
-                              TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                    const Color.fromARGB(255, 16, 96, 130),
-                                  ),
-                                ),
-                                onPressed: () {
+                              InkWell(
+                                onTap: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text('لا'),
+                                child: Container(
+                                    alignment: Alignment.center,
+                                    width: Car_Card_Constant.showdialog_bottom_w,
+                                    padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: Car_Card_Constant.containercolor,
+                                    ),
+                                    child: const My_textstyle(
+                                      text_1: 'لا',
+                                      text_color: Car_Card_Constant.title_container_color,
+                                    )),
                               ),
                             ],
                           ),
                         ],
-                        backgroundColor: const Color.fromARGB(255, 104, 104, 104),
+                        title: const Text(
+                          'هل تريد ازالة هذا الطلب  ',
+                          style: TextStyle(color: Car_Card_Constant.containercolor),
+                        ),
+                        backgroundColor: Car_Card_Constant.title_container_color,
                       );
                     },
                   );
-
-                  setState(() {});
                 }),
                 child: const Icon(
                   Icons.delete,
