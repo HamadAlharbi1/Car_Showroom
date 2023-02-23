@@ -6,8 +6,7 @@ import 'package:project4/Homepage_contents/stock_card.dart';
 import 'package:project4/contents/constants.dart';
 
 import '../contents/modols.dart';
-
-import 'newcar.dart';
+import 'Homepage.dart';
 
 class Stock extends StatefulWidget {
   const Stock({super.key});
@@ -16,6 +15,9 @@ class Stock extends StatefulWidget {
 }
 
 class _HomepageState extends State<Stock> {
+  int count = 0;
+  int total_P = 150;
+  int get available_P => total_P - count;
   StreamSubscription? listener;
   List<Car> cars = [];
   @override
@@ -23,6 +25,15 @@ class _HomepageState extends State<Stock> {
     listener?.cancel();
     super.initState();
     listenTocars();
+    listenTolength();
+  }
+
+  listenTolength() {
+    FirebaseFirestore.instance.collection('stock').snapshots().listen((collection) {
+      setState(() {
+        count = collection.size;
+      });
+    });
   }
 
   listenTocars() {
@@ -60,8 +71,27 @@ class _HomepageState extends State<Stock> {
                 fit: BoxFit.cover,
               ),
             ),
-
-            // const SizedBox(height: 60, child: h_card()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                head_title_icon(
+                  container_action: 'المواقف المتاحة',
+                  available_P: available_P,
+                  imageUrl:
+                      'https://thumbs.dreamstime.com/b/parking-lot-flat-icon-isolated-white-red-sportive-car-blue-sign-background-eps-file-available-93753209.jpg',
+                ),
+                head_title_icon(
+                  container_action: 'سعة المستودع',
+                  available_P: total_P,
+                  imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
+                ),
+                head_title_icon(
+                  container_action: 'عدد ',
+                  available_P: count,
+                  imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
+                ),
+              ],
+            ),
             for (var i in cars) Stok_card(i: i)
           ],
         ),
@@ -69,74 +99,3 @@ class _HomepageState extends State<Stock> {
     );
   }
 }
-
-// class h_card extends StatelessWidget {
-//   const h_card({
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceAround,
-//       children: [
-//         for (final i in Data_showroom.iconss)
-//           Padding(
-//             padding: const EdgeInsets.only(left: 20),
-//             child: InkWell(
-//               onTap: (() {
-//                 switch (i.description) {
-//                   case "add":
-//                     Navigator.push(
-//                       context,
-//                       MaterialPageRoute(builder: (context) => const NewCar()),
-//                     );
-//                     break;
-//                   case "Settings":
-//                     Navigator.push(
-//                       context,
-//                       MaterialPageRoute(builder: (context) => const Stock()),
-//                     );
-//                     break;
-//                   case "Profile":
-//                     Navigator.push(
-//                       context,
-//                       MaterialPageRoute(builder: (context) => const Stock()),
-//                     );
-//                     break;
-//                   // Add more cases for each icon/page
-//                 }
-//               }),
-//               child: Container(
-//                 decoration: const BoxDecoration(
-//                   borderRadius: BorderRadius.all(
-//                     Radius.circular(200),
-//                   ),
-//                 ),
-//                 clipBehavior: Clip.hardEdge,
-//                 child: Column(
-//                   children: [
-//                     Container(
-//                       decoration: const BoxDecoration(
-//                         border: Border(),
-//                         borderRadius: BorderRadius.all(
-//                           Radius.circular(16),
-//                         ),
-//                       ),
-//                       clipBehavior: Clip.hardEdge,
-//                       child: Image(
-//                         fit: BoxFit.cover,
-//                         image: NetworkImage(i.pic),
-//                         height: 60,
-//                         width: 60,
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ),
-//       ],
-//     );
-//   }
-// }

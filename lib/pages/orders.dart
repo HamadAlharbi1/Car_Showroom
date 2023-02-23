@@ -22,7 +22,7 @@ class _OrdersState extends State<Orders> {
     listenTocars();
   }
 
-  void listenTocars() {
+  listenTocars() {
     listener ??= FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
       List<Order_detail_1> newList = [];
       for (final doc in collection.docs) {
@@ -130,88 +130,7 @@ class _OrdersState extends State<Orders> {
                         height: 800,
                         child: ListView(
                           children: [
-                            for (final order in Data.orders1)
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      InkWell(
-                                          onTap: (() {
-                                            showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  title: const Text(
-                                                    'هل تريد ازالة هذا الطلب  ',
-                                                    style: TextStyle(color: Colors.white),
-                                                  ),
-                                                  actions: [
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        TextButton(
-                                                          style: ButtonStyle(
-                                                            backgroundColor: MaterialStateProperty.all<Color>(
-                                                              const Color.fromARGB(255, 16, 96, 130),
-                                                            ),
-                                                          ),
-                                                          onPressed: () {
-                                                            Navigator.pop(context);
-                                                            FirebaseFirestore.instance
-                                                                .collection('orders')
-                                                                .doc(order.id)
-                                                                .delete();
-                                                          },
-                                                          child: const Text('نعم'),
-                                                        ),
-                                                        TextButton(
-                                                          style: ButtonStyle(
-                                                            backgroundColor: MaterialStateProperty.all<Color>(
-                                                              const Color.fromARGB(255, 16, 96, 130),
-                                                            ),
-                                                          ),
-                                                          onPressed: () {
-                                                            Navigator.pop(context);
-                                                          },
-                                                          child: const Text('لا'),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                  backgroundColor: const Color.fromARGB(255, 104, 104, 104),
-                                                );
-                                              },
-                                            );
-
-                                            setState(() {});
-                                          }),
-                                          child: const Icon(
-                                            Icons.delete,
-                                            color: Color.fromARGB(255, 181, 181, 181),
-                                          )),
-                                      Row_container_Content(
-                                        text_content: order.V_model, //الموديل
-                                      ),
-                                      Row_container_Content(
-                                        text_content: order.V_color, //'اللون'
-                                      ),
-                                      Row_container_Content(
-                                        text_content: order.V_type, //'نوع المركبة'
-                                      ),
-                                      Row_container_Content(
-                                        text_content: order.phone_number, //'رقم الجوال '
-                                      ),
-                                      Row_container_Content(
-                                        text_content: order.customer_name, //'اسم العميل'
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 4,
-                                  )
-                                ],
-                              ),
+                            for (var order in orders) ordercard(order: order),
                           ],
                         ),
                       ),
@@ -223,6 +142,102 @@ class _OrdersState extends State<Orders> {
           ],
         ),
       )),
+    );
+  }
+}
+
+class ordercard extends StatefulWidget {
+  const ordercard({
+    Key? key,
+    required this.order,
+  }) : super(key: key);
+
+  final Order_detail_1 order;
+
+  @override
+  State<ordercard> createState() => _ordercardState();
+}
+
+class _ordercardState extends State<ordercard> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+                onTap: (() {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text(
+                          'هل تريد ازالة هذا الطلب  ',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        actions: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                    const Color.fromARGB(255, 16, 96, 130),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  FirebaseFirestore.instance.collection('orders').doc(widget.order.id).delete();
+                                },
+                                child: const Text('نعم'),
+                              ),
+                              TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                    const Color.fromARGB(255, 16, 96, 130),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('لا'),
+                              ),
+                            ],
+                          ),
+                        ],
+                        backgroundColor: const Color.fromARGB(255, 104, 104, 104),
+                      );
+                    },
+                  );
+
+                  setState(() {});
+                }),
+                child: const Icon(
+                  Icons.delete,
+                  color: Color.fromARGB(255, 181, 181, 181),
+                )),
+            Row_container_Content(
+              text_content: widget.order.V_model, //الموديل
+            ),
+            Row_container_Content(
+              text_content: widget.order.V_color, //'اللون'
+            ),
+            Row_container_Content(
+              text_content: widget.order.V_type, //'نوع المركبة'
+            ),
+            Row_container_Content(
+              text_content: widget.order.phone_number, //'رقم الجوال '
+            ),
+            Row_container_Content(
+              text_content: widget.order.customer_name, //'اسم العميل'
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 4,
+        )
+      ],
     );
   }
 }

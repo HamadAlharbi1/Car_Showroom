@@ -22,7 +22,6 @@ class _HomepageState extends State<Report_page> {
     listenTocars();
   }
 
-// .orderBy('Model', descending: true)
   listenTocars() {
     listener ??= FirebaseFirestore.instance
         .collection('report_of_year')
@@ -247,61 +246,3 @@ class _HomepageState extends State<Report_page> {
     );
   }
 }
-
-
-
-// class sections_Of_reports extends StatelessWidget {
-//   final String title;
-//   const sections_Of_reports({Key? key, required this.title}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       padding: const EdgeInsets.all(12),
-//       child: Container(
-//         decoration: BoxDecoration(
-//           borderRadius: BorderRadius.circular(12),
-//           color: const Color.fromARGB(61, 181, 181, 181),
-//         ),
-//         child: Padding(
-//           padding: const EdgeInsets.all(12),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               My_textstyle2(
-//                 text_1: title,
-//                 text_color: Car_Card_Constant.containercolor,
-//               )
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class content_of_sections_Of_reports extends StatelessWidget {
-//   final String title;
-//   const content_of_sections_Of_reports({Key? key, required this.title}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       padding: const EdgeInsets.all(4),
-//       width: Car_Card_Constant.report_container_w,
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(12),
-//         color: Car_Card_Constant.containercolor,
-//       ),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           My_textstyle2(
-//             text_1: title,
-//             text_color: Car_Card_Constant.fontcolor,
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../contents/constants.dart';
-import '../contents/modols.dart';
 import 'navigator.dart';
 
 class NewCar extends StatefulWidget {
@@ -205,48 +204,51 @@ class text_field_container extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: Car_Card_Constant.textcontainer_w,
-              padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Car_Card_Constant.containercolor,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  My_textstyle(text_1: title_for_textfield, text_color: Car_Card_Constant.fontcolor),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: Car_Card_Constant.textfield_container_w,
-              padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: TextFormField(
-                controller: _priceController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: textfield_content,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: Car_Card_Constant.textcontainer_w,
+                padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Car_Card_Constant.containercolor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    My_textstyle(text_1: title_for_textfield, text_color: Car_Card_Constant.fontcolor),
+                  ],
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: Car_Card_Constant.textfield_container_w,
+                padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: TextFormField(
+                  controller: _priceController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: textfield_content,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -267,43 +269,46 @@ class _Choose_from_the_listState extends State<Choose_from_the_list> {
   String selectedItem = '2023';
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: Car_Card_Constant.textcontainer_w,
-              padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Car_Card_Constant.containercolor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: Car_Card_Constant.textcontainer_w,
+                padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Car_Card_Constant.containercolor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
+                  ],
+                ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
-                ],
-              ),
-            ),
-          ],
-        ),
-        DropdownButton<String>(
-          items: items.map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: (newValue) {
-            setState(() {
-              selectedItem = newValue!;
-            });
-          },
-          value: selectedItem,
-        ),
-      ],
+            ],
+          ),
+          DropdownButton<String>(
+            items: items.map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (newValue) {
+              setState(() {
+                selectedItem = newValue!;
+              });
+            },
+            value: selectedItem,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -347,43 +352,46 @@ class _Choose_from_the_listState_2 extends State<Choose_from_the_list_2> {
   String selectedItem = 'Choose from the list';
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: Car_Card_Constant.textcontainer_w,
-              padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Car_Card_Constant.containercolor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: Car_Card_Constant.textcontainer_w,
+                padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Car_Card_Constant.containercolor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
+                  ],
+                ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
-                ],
-              ),
-            ),
-          ],
-        ),
-        DropdownButton<String>(
-          items: items.map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: (newValue) {
-            setState(() {
-              selectedItem = newValue!;
-            });
-          },
-          value: selectedItem,
-        ),
-      ],
+            ],
+          ),
+          DropdownButton<String>(
+            items: items.map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (newValue) {
+              setState(() {
+                selectedItem = newValue!;
+              });
+            },
+            value: selectedItem,
+          ),
+        ],
+      ),
     );
   }
 }

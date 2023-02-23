@@ -7,174 +7,6 @@ import 'orders.dart';
 import 'report.dart';
 import 'stock.dart';
 
-// class navigationBar extends StatefulWidget {
-//   const navigationBar({super.key});
-//   @override
-//   State<navigationBar> createState() => _navigationBarState();
-// }
-
-// class _navigationBarState extends State<navigationBar> {
-//   var currentIndex = 3;
-//   static const MyIconcolor = Colors.white38;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     Widget body;
-//     var pages = [
-//       const Report_page(), // التقارير
-//       const Report_page(), // التقارير
-//       const NewCar(), // اضافة سيارة
-//       const Homepage(), // صالة العرض الرئيسيه
-//       const Orders(), //'طلبات العملاء
-//       const Stock(), // المستودع
-//       const Report_page(), // التقارير
-//     ];
-
-//     return Scaffold(
-//       body: pages[currentIndex],
-//       bottomNavigationBar: BottomNavigationBar(
-//         items: const [
-//           BottomNavigationBarItem(icon: Icon(Icons.report), label: 'التقارير '),
-//           BottomNavigationBarItem(icon: Icon(Icons.report), label: 'التقارير '),
-//           BottomNavigationBarItem(icon: Icon(Icons.add), label: 'اضافة سيارة '),
-//           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'الصالة الرئيسيه'),
-//           BottomNavigationBarItem(icon: Icon(Icons.request_page), label: 'طلبات العملاء '),
-//           BottomNavigationBarItem(icon: Icon(Icons.warehouse), label: 'المستودع '),
-//           BottomNavigationBarItem(icon: Icon(Icons.report), label: 'التقارير '),
-//         ],
-//         onTap: (newIndex) {
-//           currentIndex = newIndex;
-//           setState(() {});
-//         },
-//         currentIndex: currentIndex,
-//         type: BottomNavigationBarType.fixed,
-//         backgroundColor: const Color.fromARGB(255, 16, 96, 130),
-//         selectedItemColor: const Color.fromARGB(255, 255, 229, 229),
-//         selectedFontSize: 10,
-//         unselectedItemColor: const Color.fromARGB(255, 78, 132, 133),
-//       ),
-//     );
-//   }
-// }
-
-// class navigationBar extends StatefulWidget {
-//   const navigationBar({super.key});
-
-//   @override
-//   State<navigationBar> createState() => _navigationBarState();
-// }
-
-// class _navigationBarState extends State<navigationBar> {
-//   var currentIndex = 3;
-//   static const MyIconcolor = Colors.white38;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     Widget body;
-//     var pages = [
-//       const Report_page(), // التقارير
-//       const Report_page(), // التقارير
-//       const NewCar(), // اضافة سيارة
-//       const Homepage(), // صالة العرض الرئيسيه
-//       const Orders(), //'طلبات العملاء
-//       const Stock(), // المستودع
-//       const Report_page(), // التقارير
-//     ];
-
-//     return Scaffold(
-//       body: pages[currentIndex],
-//       appBar: AppBar(
-//         title: const Text('My App'),
-//       ),
-//       drawer: SafeArea(
-//         child: Drawer(
-//           child: Column(
-//             children: [
-//               const DrawerHeader(
-//                 decoration: BoxDecoration(
-//                   color: Colors.blue,
-//                 ),
-//                 child: Text('Drawer Header'),
-//               ),
-//               ListTile(
-//                 leading: const Icon(Icons.report),
-//                 title: const Text('التقارير'),
-//                 onTap: () {
-//                   setState(() {
-//                     currentIndex = 0;
-//                   });
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//               ListTile(
-//                 leading: const Icon(Icons.report),
-//                 title: const Text('التقارير'),
-//                 onTap: () {
-//                   setState(() {
-//                     currentIndex = 1;
-//                   });
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//               ListTile(
-//                 leading: const Icon(Icons.add),
-//                 title: const Text('اضافة سيارة'),
-//                 onTap: () {
-//                   setState(() {
-//                     currentIndex = 2;
-//                   });
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//               ListTile(
-//                 leading: const Icon(Icons.home),
-//                 title: const Text('الصالة الرئيسية'),
-//                 onTap: () {
-//                   setState(() {
-//                     currentIndex = 3;
-//                   });
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//               ListTile(
-//                 leading: const Icon(Icons.request_page),
-//                 title: const Text('طلبات العملاء'),
-//                 onTap: () {
-//                   setState(() {
-//                     currentIndex = 4;
-//                   });
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//               ListTile(
-//                 leading: const Icon(Icons.warehouse),
-//                 title: const Text('المستودع'),
-//                 onTap: () {
-//                   setState(() {
-//                     currentIndex = 5;
-//                   });
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//               ListTile(
-//                 leading: const Icon(Icons.report),
-//                 title: const Text('التقارير'),
-//                 onTap: () {
-//                   setState(() {
-//                     currentIndex = 6;
-//                   });
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//       drawerEdgeDragWidth: 0, // Disable the default edge drag width
-//     );
-//   }
-// }
-
 class navigationBar extends StatefulWidget {
   const navigationBar({Key? key}) : super(key: key);
 
@@ -205,7 +37,6 @@ class _navigationBarState extends State<navigationBar> {
           Expanded(
             flex: 0,
             child: Drawer(
-            
               child: ListView(
                 children: [
                   DrawerHeader(
@@ -217,8 +48,14 @@ class _navigationBarState extends State<navigationBar> {
                     ),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.report),
-                    title: const Text('التقارير'),
+                    title: Container(
+                      alignment: Alignment.topRight,
+                      child: const My_textstyle(
+                        My_fontsize: 20,
+                        text_1: 'التقارير',
+                        text_color: MyIconcolor,
+                      ),
+                    ),
                     onTap: () {
                       setState(() {
                         currentIndex = 0;
@@ -226,8 +63,14 @@ class _navigationBarState extends State<navigationBar> {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.report),
-                    title: const Text('التقارير'),
+                    title: Container(
+                      alignment: Alignment.topRight,
+                      child: const My_textstyle(
+                        My_fontsize: 20,
+                        text_1: 'التقارير',
+                        text_color: MyIconcolor,
+                      ),
+                    ),
                     onTap: () {
                       setState(() {
                         currentIndex = 1;
@@ -235,8 +78,14 @@ class _navigationBarState extends State<navigationBar> {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.add),
-                    title: const Text('اضافة سيارة'),
+                    title: Container(
+                      alignment: Alignment.topRight,
+                      child: const My_textstyle(
+                        My_fontsize: 20,
+                        text_1: 'اضافة سيارة',
+                        text_color: MyIconcolor,
+                      ),
+                    ),
                     onTap: () {
                       setState(() {
                         currentIndex = 2;
@@ -244,8 +93,14 @@ class _navigationBarState extends State<navigationBar> {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.home),
-                    title: const Text('الصالة الرئيسيه'),
+                    title: Container(
+                      alignment: Alignment.topRight,
+                      child: const My_textstyle(
+                        My_fontsize: 20,
+                        text_1: 'الصفحة الرئيسية',
+                        text_color: MyIconcolor,
+                      ),
+                    ),
                     onTap: () {
                       setState(() {
                         currentIndex = 3;
@@ -253,8 +108,14 @@ class _navigationBarState extends State<navigationBar> {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.request_page),
-                    title: const Text('طلبات العملاء'),
+                    title: Container(
+                      alignment: Alignment.topRight,
+                      child: const My_textstyle(
+                        My_fontsize: 20,
+                        text_1: 'طلبات العملاء',
+                        text_color: MyIconcolor,
+                      ),
+                    ),
                     onTap: () {
                       setState(() {
                         currentIndex = 4;
@@ -262,8 +123,14 @@ class _navigationBarState extends State<navigationBar> {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.warehouse),
-                    title: const Text('المستودع'),
+                    title: Container(
+                      alignment: Alignment.topRight,
+                      child: const My_textstyle(
+                        My_fontsize: 20,
+                        text_1: 'المستودع',
+                        text_color: MyIconcolor,
+                      ),
+                    ),
                     onTap: () {
                       setState(() {
                         currentIndex = 5;
@@ -271,8 +138,14 @@ class _navigationBarState extends State<navigationBar> {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.report),
-                    title: const Text('التقارير'),
+                    title: Container(
+                      alignment: Alignment.topRight,
+                      child: const My_textstyle(
+                        My_fontsize: 20,
+                        text_1: 'التقارير',
+                        text_color: MyIconcolor,
+                      ),
+                    ),
                     onTap: () {
                       setState(() {
                         currentIndex = 6;

@@ -15,12 +15,16 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   int count = 0;
+  int total_P = 20;
+  int get available_P => total_P - count;
+
   StreamSubscription? listener;
   List<Car> cars = [];
   @override
   void initState() {
     listener?.cancel();
     super.initState();
+
     listenTocars();
     listenTolength();
   }
@@ -69,19 +73,116 @@ class _HomepageState extends State<Homepage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              Text(
-                '$count',
-                style: const TextStyle(fontSize: 24),
+              const height_1(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  head_title_icon(
+                    container_action: 'المواقف المتاحة',
+                    available_P: available_P,
+                    imageUrl:
+                        'https://thumbs.dreamstime.com/b/parking-lot-flat-icon-isolated-white-red-sportive-car-blue-sign-background-eps-file-available-93753209.jpg',
+                  ),
+                  head_title_icon(
+                    container_action: 'سعة المعرض',
+                    available_P: total_P,
+                    imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
+                  ),
+                  head_title_icon(
+                    container_action: '  عدد المركبات ',
+                    available_P: count,
+                    imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 24,
-              ),
+              const height_1(),
               // const SizedBox(height: 60, child: h_card()),
               for (var i in cars) Car_Card(i: i)
             ],
           ),
         ),
       )),
+    );
+  }
+}
+
+class head_title_icon extends StatelessWidget {
+  final String container_action;
+  final String imageUrl;
+  const head_title_icon({Key? key, required this.available_P, required this.imageUrl, required this.container_action})
+      : super(key: key);
+
+  final int available_P;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 250,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          custom_container(
+            container_title: '$available_P',
+            container_action: container_action,
+          ),
+          Image.network(
+            imageUrl,
+            height: 45,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class height_1 extends StatelessWidget {
+  const height_1({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(height: Car_Card_Constant.distance_between_card_parts);
+  }
+}
+
+class custom_container extends StatelessWidget {
+  final String container_title;
+  final String container_action;
+  const custom_container({Key? key, required this.container_title, required this.container_action}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 200,
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Car_Card_Constant.containercolor,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              My_textstyle(
+                My_fontsize: 20,
+                text_1: container_title,
+                text_color: const Color.fromARGB(255, 255, 255, 255),
+              ),
+              const SizedBox(
+                width: Car_Card_Constant.distance_between_card_parts,
+              ),
+              My_textstyle(
+                My_fontsize: 20,
+                text_1: container_action,
+                text_color: Car_Card_Constant.fontcolor,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

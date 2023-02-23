@@ -4,16 +4,17 @@ import '../Homepage_contents/Car_Card.dart';
 
 class Car_Card_Constant {
   static const fontcolor = Color.fromARGB(255, 181, 181, 181);
-  static const fontcolor2 = Color.fromARGB(255, 203, 255, 168);
+  static const fontcolor2 = Color.fromARGB(255, 254, 254, 254);
   static const containercolor = Color.fromARGB(255, 63, 108, 147);
   static const title_container_color = Color.fromARGB(255, 151, 157, 161);
   static const double photo_Box_h = 150;
   static const double photo_Box_w = 200;
   static const double distance_between_card_parts = 12;
   static const double textcontainer_w = 160;
-  static const double icon_container_w = 80;
+  static const double icon_container_w = 35;
   static const double report_container_w = 120;
   static const double textfield_container_w = 88;
+  static const double parking_container_h = 60;
   static const double fontsize1 = 16;
   static const double fontsize2 = 12;
   static const double fontsize32 = 32;
@@ -24,10 +25,19 @@ class Car_Card_Constant {
   static const dynamic textstyle = TextStyle(color: Colors.white);
 }
 
+
+
 class My_textstyle extends StatelessWidget {
+  final double My_fontsize;
   final String text_1;
   final Color text_color;
-  const My_textstyle({Key? key, required this.text_1, required this.text_color}) : super(key: key);
+
+  const My_textstyle({
+    Key? key,
+    required this.text_1,
+    required this.text_color,
+    this.My_fontsize = 16.0,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +45,12 @@ class My_textstyle extends StatelessWidget {
       text_1,
       style: TextStyle(
         color: text_color,
-        fontSize: Car_Card_Constant.fontsize1,
+        fontSize: My_fontsize,
       ),
     );
   }
 }
+
 
 class My_textstyle2 extends StatelessWidget {
   final String text_1;
