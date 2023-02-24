@@ -73,13 +73,12 @@ class _EditCarState extends State<EditCar> {
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Container(
-                  height: Colors_and_Dimentions.photo_Box_w,
-                  width: Colors_and_Dimentions.photo_Box_w,
+                  height: Colors_and_Dimentions.photo_Box_edit,
+                  width: Colors_and_Dimentions.photo_Box_edit,
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                   child: Image.network(
                     widget.car.image,
-                    fit: BoxFit.cover,
                   ),
                 ),
               ),

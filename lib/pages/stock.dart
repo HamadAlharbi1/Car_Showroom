@@ -54,46 +54,49 @@ class _HomepageState extends State<Stock> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: SizedBox(
-        height: 900,
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 24,
-            ),
-            Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              height: Colors_and_Dimentions.photo_Box_h,
-              width: Colors_and_Dimentions.photo_Box_w,
-              child: Image.network(
-                'https://t4.ftcdn.net/jpg/03/02/27/95/360_F_302279500_a5GGFqnBM9YPJnBY7RxIQXL2UtQHUKyu.jpg',
-                fit: BoxFit.cover,
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: 900,
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 24,
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                head_title_icon(
-                  container_action: 'المواقف المتاحة',
-                  available_P: available_P,
-                  imageUrl:
-                      'https://thumbs.dreamstime.com/b/parking-lot-flat-icon-isolated-white-red-sportive-car-blue-sign-background-eps-file-available-93753209.jpg',
+              Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                height: Colors_and_Dimentions.photo_Box_h,
+                width: Colors_and_Dimentions.photo_Box_w,
+                child: Image.network(
+                  'https://t4.ftcdn.net/jpg/03/02/27/95/360_F_302279500_a5GGFqnBM9YPJnBY7RxIQXL2UtQHUKyu.jpg',
+                  fit: BoxFit.cover,
                 ),
-                head_title_icon(
-                  container_action: 'سعة المستودع',
-                  available_P: total_P,
-                  imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
-                ),
-                head_title_icon(
-                  container_action: ' عدد المركبات  ',
-                  available_P: count,
-                  imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
-                ),
-              ],
-            ),
-            for (var i in cars) Stok_card(i: i)
-          ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  head_title_icon(
+                    container_action: 'المواقف المتاحة',
+                    available_P: available_P,
+                    imageUrl:
+                        'https://thumbs.dreamstime.com/b/parking-lot-flat-icon-isolated-white-red-sportive-car-blue-sign-background-eps-file-available-93753209.jpg',
+                  ),
+                  head_title_icon(
+                    container_action: 'سعة المستودع',
+                    available_P: total_P,
+                    imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
+                  ),
+                  head_title_icon(
+                    container_action: ' عدد المركبات  ',
+                    available_P: count,
+                    imageUrl: 'https://cdn0.iconfinder.com/data/icons/car-services/500/Car_Service_9-512.png',
+                  ),
+                ],
+              ),
+              for (var i in cars) Stok_card(i: i)
+            ],
+          ),
         ),
       )),
     );

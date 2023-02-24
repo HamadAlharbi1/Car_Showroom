@@ -11,6 +11,9 @@ class Colors_and_Dimentions {
   static const SelectedColor = Color.fromARGB(255, 0, 48, 87);
   static const double photo_Box_h = 150;
   static const double photo_Box_w = 700;
+  static const double photo_Box_w2 = 450;
+  static const double photo_Box_edit = 200;
+
   static const double distance_between_card_parts = 12;
   static const double textcontainer_w = 160;
   static const double icon_container_w = 35;
@@ -47,6 +50,33 @@ class My_textstyle extends StatelessWidget {
       style: TextStyle(
         color: text_color,
         fontSize: My_fontsize,
+      ),
+    );
+  }
+}
+
+class Redirect_the_request extends StatelessWidget {
+  final double My_fontsize;
+  final String text_1;
+  final Color text_color;
+
+  const Redirect_the_request({
+    Key? key,
+    required this.text_1,
+    required this.text_color,
+    this.My_fontsize = 16.0,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        text_1,
+        style: TextStyle(
+          color: text_color,
+          fontSize: My_fontsize,
+        ),
       ),
     );
   }
@@ -138,7 +168,7 @@ class Row_container_Content_2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Colors_and_Dimentions.report_container_w,
-      height: Colors_and_Dimentions.parking_container_h,
+      height: Colors_and_Dimentions.icon_container_w,
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),

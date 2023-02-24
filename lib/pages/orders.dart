@@ -199,86 +199,166 @@ class _ordercardState extends State<ordercard> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-                onTap: (() {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        actions: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                onTap: () {
+        InkWell(
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  alignment: Alignment.center,
+                  actions: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                setState(() {
                                   Navigator.pop(context);
+                                  FirebaseFirestore.instance
+                                      .collection('Mohammed')
+                                      .doc(widget.order.id)
+                                      .set(widget.order.toMap());
                                   FirebaseFirestore.instance.collection('orders').doc(widget.order.id).delete();
-                                },
-                                child: Container(
-                                    alignment: Alignment.center,
-                                    width: Colors_and_Dimentions.showdialog_bottom_w,
-                                    padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: Colors_and_Dimentions.containercolor,
-                                    ),
-                                    child: const My_textstyle(
-                                      text_1: 'نعم',
-                                      text_color: Colors_and_Dimentions.title_container_color,
-                                    )),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Container(
-                                    alignment: Alignment.center,
-                                    width: Colors_and_Dimentions.showdialog_bottom_w,
-                                    padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: Colors_and_Dimentions.containercolor,
-                                    ),
-                                    child: const My_textstyle(
-                                      text_1: 'لا',
-                                      text_color: Colors_and_Dimentions.title_container_color,
-                                    )),
-                              ),
-                            ],
-                          ),
-                        ],
-                        title: const Text(
-                          'هل تريد ازالة هذا الطلب  ',
-                          style: TextStyle(color: Colors_and_Dimentions.containercolor),
+                                });
+                              },
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  width: Colors_and_Dimentions.showdialog_bottom_w,
+                                  padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors_and_Dimentions.containercolor,
+                                  ),
+                                  child: const My_textstyle(
+                                    text_1: 'محمد',
+                                    text_color: Colors_and_Dimentions.title_container_color,
+                                  )),
+                            ),
+                            SizedBox(
+                              height: Colors_and_Dimentions.distance_between_card_parts,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                                FirebaseFirestore.instance
+                                    .collection('abdullah')
+                                    .doc(widget.order.id)
+                                    .set(widget.order.toMap());
+                                FirebaseFirestore.instance.collection('order').doc(widget.order.id).delete();
+                              },
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  width: Colors_and_Dimentions.showdialog_bottom_w,
+                                  padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors_and_Dimentions.containercolor,
+                                  ),
+                                  child: const My_textstyle(
+                                    text_1: 'عبدالله',
+                                    text_color: Colors_and_Dimentions.title_container_color,
+                                  )),
+                            ),
+                          ],
                         ),
-                        backgroundColor: Colors_and_Dimentions.title_container_color,
-                      );
-                    },
-                  );
-                }),
-                child: const Icon(
-                  Icons.delete,
-                  color: Color.fromARGB(255, 181, 181, 181),
-                )),
-            Row_container_Content(
-              text_content: widget.order.V_model, //الموديل
-            ),
-            Row_container_Content(
-              text_content: widget.order.V_color, //'اللون'
-            ),
-            Row_container_Content(
-              text_content: widget.order.V_type, //'نوع المركبة'
-            ),
-            Row_container_Content(
-              text_content: widget.order.phone_number, //'رقم الجوال '
-            ),
-            Row_container_Content(
-              text_content: widget.order.customer_name, //'اسم العميل'
-            ),
-          ],
+                      ],
+                    ),
+                  ],
+                  title: const Text(
+                    ' قم بتوجيه الطلب لاحد مستشاري المبيعات  ',
+                    style: TextStyle(color: Colors_and_Dimentions.containercolor),
+                  ),
+                  backgroundColor: Colors_and_Dimentions.title_container_color,
+                );
+              },
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                  onTap: (() {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          actions: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    FirebaseFirestore.instance.collection('orders').doc(widget.order.id).delete();
+                                  },
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      width: Colors_and_Dimentions.showdialog_bottom_w,
+                                      padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors_and_Dimentions.containercolor,
+                                      ),
+                                      child: const My_textstyle(
+                                        text_1: 'نعم',
+                                        text_color: Colors_and_Dimentions.title_container_color,
+                                      )),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      width: Colors_and_Dimentions.showdialog_bottom_w,
+                                      padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors_and_Dimentions.containercolor,
+                                      ),
+                                      child: const My_textstyle(
+                                        text_1: 'لا',
+                                        text_color: Colors_and_Dimentions.title_container_color,
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ],
+                          title: const Text(
+                            'هل تريد ازالة هذا الطلب  ',
+                            style: TextStyle(color: Colors_and_Dimentions.containercolor),
+                          ),
+                          backgroundColor: Colors_and_Dimentions.title_container_color,
+                        );
+                      },
+                    );
+                  }),
+                  child: const Icon(
+                    Icons.delete,
+                    color: Color.fromARGB(255, 181, 181, 181),
+                  )),
+              Row_container_Content(
+                text_content: widget.order.V_model, //الموديل
+              ),
+              Row_container_Content(
+                text_content: widget.order.V_color, //'اللون'
+              ),
+              Row_container_Content(
+                text_content: widget.order.V_type, //'نوع المركبة'
+              ),
+              Row_container_Content(
+                text_content: widget.order.phone_number, //'رقم الجوال '
+              ),
+              Row_container_Content(
+                text_content: widget.order.customer_name, //'اسم العميل'
+              ),
+            ],
+          ),
         ),
         const SizedBox(
           height: 4,
