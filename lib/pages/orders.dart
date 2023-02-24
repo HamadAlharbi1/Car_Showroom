@@ -71,8 +71,8 @@ class _OrdersState extends State<Orders> {
             Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              height: Car_Card_Constant.photo_Box_h,
-              width: Car_Card_Constant.photo_Box_w,
+              height: Colors_and_Dimentions.photo_Box_h,
+              width: Colors_and_Dimentions.photo_Box_w,
               child: Image.network(
                 'https://acena.com/wp-content/uploads/2015/01/Customer-on-Hold-For-Long-Periods-of-Time.jpg',
                 fit: BoxFit.cover,
@@ -139,7 +139,7 @@ class _OrdersState extends State<Orders> {
                             }),
                             child: const Icon(
                               Icons.add,
-                              color: Car_Card_Constant.containercolor,
+                              color: Colors_and_Dimentions.containercolor,
                             ),
                           ),
                           const Row_container_title(
@@ -219,15 +219,15 @@ class _ordercardState extends State<ordercard> {
                                 },
                                 child: Container(
                                     alignment: Alignment.center,
-                                    width: Car_Card_Constant.showdialog_bottom_w,
+                                    width: Colors_and_Dimentions.showdialog_bottom_w,
                                     padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
-                                      color: Car_Card_Constant.containercolor,
+                                      color: Colors_and_Dimentions.containercolor,
                                     ),
                                     child: const My_textstyle(
                                       text_1: 'نعم',
-                                      text_color: Car_Card_Constant.title_container_color,
+                                      text_color: Colors_and_Dimentions.title_container_color,
                                     )),
                               ),
                               InkWell(
@@ -236,15 +236,15 @@ class _ordercardState extends State<ordercard> {
                                 },
                                 child: Container(
                                     alignment: Alignment.center,
-                                    width: Car_Card_Constant.showdialog_bottom_w,
+                                    width: Colors_and_Dimentions.showdialog_bottom_w,
                                     padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
-                                      color: Car_Card_Constant.containercolor,
+                                      color: Colors_and_Dimentions.containercolor,
                                     ),
                                     child: const My_textstyle(
                                       text_1: 'لا',
-                                      text_color: Car_Card_Constant.title_container_color,
+                                      text_color: Colors_and_Dimentions.title_container_color,
                                     )),
                               ),
                             ],
@@ -252,9 +252,9 @@ class _ordercardState extends State<ordercard> {
                         ],
                         title: const Text(
                           'هل تريد ازالة هذا الطلب  ',
-                          style: TextStyle(color: Car_Card_Constant.containercolor),
+                          style: TextStyle(color: Colors_and_Dimentions.containercolor),
                         ),
-                        backgroundColor: Car_Card_Constant.title_container_color,
+                        backgroundColor: Colors_and_Dimentions.title_container_color,
                       );
                     },
                   );

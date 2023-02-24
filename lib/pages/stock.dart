@@ -64,8 +64,8 @@ class _HomepageState extends State<Stock> {
             Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              height: Car_Card_Constant.photo_Box_h,
-              width: Car_Card_Constant.photo_Box_w,
+              height: Colors_and_Dimentions.photo_Box_h,
+              width: Colors_and_Dimentions.photo_Box_w,
               child: Image.network(
                 'https://t4.ftcdn.net/jpg/03/02/27/95/360_F_302279500_a5GGFqnBM9YPJnBY7RxIQXL2UtQHUKyu.jpg',
                 fit: BoxFit.cover,

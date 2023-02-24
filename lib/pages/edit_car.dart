@@ -73,8 +73,8 @@ class _EditCarState extends State<EditCar> {
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Container(
-                  height: Car_Card_Constant.photo_Box_w,
-                  width: Car_Card_Constant.photo_Box_w,
+                  height: Colors_and_Dimentions.photo_Box_w,
+                  width: Colors_and_Dimentions.photo_Box_w,
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                   child: Image.network(
@@ -105,7 +105,7 @@ class _EditCarState extends State<EditCar> {
                 title_for_textfield: 'ادخل رقم الموقف',
               ),
               const SizedBox(
-                height: Car_Card_Constant.fontsize32,
+                height: Colors_and_Dimentions.fontsize32,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -129,12 +129,12 @@ class _EditCarState extends State<EditCar> {
                           padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: Car_Card_Constant.containercolor,
+                            color: Colors_and_Dimentions.containercolor,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
-                              My_textstyle(text_1: 'حفظ التعديلات', text_color: Car_Card_Constant.fontcolor),
+                              My_textstyle(text_1: 'حفظ التعديلات', text_color: Colors_and_Dimentions.fontcolor),
                             ],
                           ),
                         ),
@@ -164,15 +164,15 @@ class _EditCarState extends State<EditCar> {
                                     },
                                     child: Container(
                                         alignment: Alignment.center,
-                                        width: Car_Card_Constant.showdialog_bottom_w,
+                                        width: Colors_and_Dimentions.showdialog_bottom_w,
                                         padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(12),
-                                          color: Car_Card_Constant.containercolor,
+                                          color: Colors_and_Dimentions.containercolor,
                                         ),
                                         child: const My_textstyle(
                                           text_1: 'نعم',
-                                          text_color: Car_Card_Constant.title_container_color,
+                                          text_color: Colors_and_Dimentions.title_container_color,
                                         )),
                                   ),
                                   InkWell(
@@ -181,15 +181,15 @@ class _EditCarState extends State<EditCar> {
                                     },
                                     child: Container(
                                         alignment: Alignment.center,
-                                        width: Car_Card_Constant.showdialog_bottom_w,
+                                        width: Colors_and_Dimentions.showdialog_bottom_w,
                                         padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(12),
-                                          color: Car_Card_Constant.containercolor,
+                                          color: Colors_and_Dimentions.containercolor,
                                         ),
                                         child: const My_textstyle(
                                           text_1: 'لا',
-                                          text_color: Car_Card_Constant.title_container_color,
+                                          text_color: Colors_and_Dimentions.title_container_color,
                                         )),
                                   ),
                                 ],
@@ -197,9 +197,9 @@ class _EditCarState extends State<EditCar> {
                             ],
                             title: const Text(
                               ' هل تريد ازالة هذه السيارة ؟ ',
-                              style: TextStyle(color: Car_Card_Constant.containercolor),
+                              style: TextStyle(color: Colors_and_Dimentions.containercolor),
                             ),
-                            backgroundColor: Car_Card_Constant.title_container_color,
+                            backgroundColor: Colors_and_Dimentions.title_container_color,
                           );
                         },
                       );
@@ -218,7 +218,7 @@ class _EditCarState extends State<EditCar> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
-                              My_textstyle(text_1: 'ازالة هذه السياره', text_color: Car_Card_Constant.fontcolor),
+                              My_textstyle(text_1: 'ازالة هذه السياره', text_color: Colors_and_Dimentions.fontcolor),
                             ],
                           ),
                         ),

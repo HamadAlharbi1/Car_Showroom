@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../Homepage_contents/Car_Card.dart';
 import '../contents/constants.dart';
-import '../contents/modols.dart';
 import 'navigator.dart';
 
 class New_Order extends StatefulWidget {
@@ -177,7 +175,7 @@ class text_field_container extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: Car_Card_Constant.textfield_container_w,
+              width: Colors_and_Dimentions.textfield_container_w,
               padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
@@ -249,16 +247,16 @@ class Choose_from_the_list2 extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: Car_Card_Constant.textcontainer_w,
+              width: Colors_and_Dimentions.textcontainer_w,
               padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Car_Card_Constant.containercolor,
+                color: Colors_and_Dimentions.containercolor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  My_textstyle(text_1: title_of_list, text_color: Car_Card_Constant.fontcolor),
+                  My_textstyle(text_1: title_of_list, text_color: Colors_and_Dimentions.fontcolor),
                 ],
               ),
             ),
@@ -295,5 +293,3 @@ class Choose_from_the_list2 extends StatelessWidget {
     );
   }
 }
-
-

@@ -628,45 +628,150 @@ class Data {
         V_model: '2021'),
   ];
   static List<Saled_reports> reports1 = [
-    Saled_reports(id: '1', saler_name: "محمد الحربي", Number_of_salles: '230', s_points: '2850', Period_of_s: '3 أيام'),
     Saled_reports(
-        id: '2', saler_name: "نورة المطيري", Number_of_salles: '380', s_points: '2700', Period_of_s: '4 أيام'),
-    Saled_reports(id: '3', saler_name: "علي الشمري", Number_of_salles: '620', s_points: '2550', Period_of_s: 'يومين'),
+        s_M_points: '300',
+        Period_of_M_s: '5 أيام',
+        Number_of_M_salles: '28',
+        id: '1',
+        saler_name: "علي العبدلي",
+        Number_of_Y_salles: '200',
+        s_Y_points: '2500',
+        Period_of_Y_s: '4 أيام'),
     Saled_reports(
-        id: '4', saler_name: "فاطمة العتيبي", Number_of_salles: '440', s_points: '2400', Period_of_s: '3 أيام'),
-    Saled_reports(id: '5', saler_name: "أحمد الحارثي", Number_of_salles: '520', s_points: '2300', Period_of_s: 'يومين'),
+        s_M_points: '270',
+        Period_of_M_s: '3 أيام',
+        Number_of_M_salles: '27',
+        id: '2',
+        saler_name: "فاطمة الحمداني",
+        Number_of_Y_salles: '195',
+        s_Y_points: '2400',
+        Period_of_Y_s: '7 أيام'),
     Saled_reports(
-        id: '6', saler_name: "سارة المسعودي", Number_of_salles: '310', s_points: '2200', Period_of_s: '5 أيام'),
+        s_M_points: '250',
+        Period_of_M_s: '7 أيام',
+        Number_of_M_salles: '25',
+        id: '3',
+        saler_name: "محمد العويد",
+        Number_of_Y_salles: '180',
+        s_Y_points: '2200',
+        Period_of_Y_s: '3 أيام'),
     Saled_reports(
-        id: '7', saler_name: "عبدالله الجاسر", Number_of_salles: '460', s_points: '2150', Period_of_s: 'يومين'),
+        s_M_points: '230',
+        Period_of_M_s: '4 أيام',
+        Number_of_M_salles: '24',
+        id: '4',
+        saler_name: "ريما الشمري",
+        Number_of_Y_salles: '165',
+        s_Y_points: '2050',
+        Period_of_Y_s: '6 أيام'),
     Saled_reports(
-        id: '8', saler_name: "شيماء الحمدان", Number_of_salles: '270', s_points: '2050', Period_of_s: '4 أيام'),
-    Saled_reports(id: '9', saler_name: "ياسر الخليفة", Number_of_salles: '390', s_points: '1950', Period_of_s: 'يومين'),
+        s_M_points: '200',
+        Period_of_M_s: '6 أيام',
+        Number_of_M_salles: '20',
+        id: '5',
+        saler_name: "عمر العجمي",
+        Number_of_Y_salles: '150',
+        s_Y_points: '1900',
+        Period_of_Y_s: '5 أيام'),
     Saled_reports(
-        id: '10', saler_name: "مريم الجاسر", Number_of_salles: '510', s_points: '1900', Period_of_s: '3 أيام'),
+        s_M_points: '180',
+        Period_of_M_s: '7 أيام',
+        Number_of_M_salles: '18',
+        id: '6',
+        saler_name: "هند القحطاني",
+        Number_of_Y_salles: '130',
+        s_Y_points: '1600',
+        Period_of_Y_s: '3 أيام'),
     Saled_reports(
-        id: '11', saler_name: "خالد المرزوقي", Number_of_salles: '580', s_points: '1800', Period_of_s: 'يومين'),
+        s_M_points: '160',
+        Period_of_M_s: '5 أيام',
+        Number_of_M_salles: '16',
+        id: '7',
+        saler_name: "عبدالله الجابر",
+        Number_of_Y_salles: '115',
+        s_Y_points: '1400',
+        Period_of_Y_s: '4 أيام'),
     Saled_reports(
-        id: '12', saler_name: "ليلى العويضة", Number_of_salles: '420', s_points: '1750', Period_of_s: '4 أيام'),
-    Saled_reports(id: '13', saler_name: "حسين الفهد", Number_of_salles: '340', s_points: '1650', Period_of_s: 'يومين'),
-  ];
-  static List<Saled_reports> reports2 = [
-    Saled_reports(id: '1', saler_name: "محمد الحربي", Number_of_salles: '16', s_points: '240', Period_of_s: '3 أيام'),
-    Saled_reports(id: '2', saler_name: "سارة العتيبي", Number_of_salles: '18', s_points: '290', Period_of_s: '4 أيام'),
-    Saled_reports(id: '3', saler_name: "علي الجابر", Number_of_salles: '20', s_points: '270', Period_of_s: 'يومين'),
+        s_M_points: '140',
+        Period_of_M_s: '3 أيام',
+        Number_of_M_salles: '14',
+        id: '8',
+        saler_name: "نور الحمد",
+        Number_of_Y_salles: '100',
+        s_Y_points: '1250',
+        Period_of_Y_s: '7 أيام'),
     Saled_reports(
-        id: '4', saler_name: "فاطمة الشهراني", Number_of_salles: '21', s_points: '260', Period_of_s: '5 أيام'),
-    Saled_reports(id: '5', saler_name: "أحمد المطيري", Number_of_salles: '22', s_points: '250', Period_of_s: '3 أيام'),
-    Saled_reports(id: '6', saler_name: "نورة الدوسري", Number_of_salles: '25', s_points: '240', Period_of_s: 'يومين'),
+        s_M_points: '120',
+        Period_of_M_s: '4 أيام',
+        Number_of_M_salles: '12',
+        id: '9',
+        saler_name: "سارة المنيف",
+        Number_of_Y_salles: '85',
+        s_Y_points: '1050',
+        Period_of_Y_s: '5 أيام'),
     Saled_reports(
-        id: '7', saler_name: "عبدالله الخليفة", Number_of_salles: '28', s_points: '235', Period_of_s: '4 أيام'),
-    Saled_reports(id: '8', saler_name: "شيماء القحطاني", Number_of_salles: '30', s_points: '220', Period_of_s: 'يومين'),
-    Saled_reports(id: '9', saler_name: "ياسر الحمدان", Number_of_salles: '32', s_points: '210', Period_of_s: '3 أيام'),
-    Saled_reports(id: '10', saler_name: "مريم الدخيل", Number_of_salles: '35', s_points: '200', Period_of_s: '4 أيام'),
-    Saled_reports(id: '11', saler_name: "خالد الشمري", Number_of_salles: '37', s_points: '195', Period_of_s: 'يومين'),
-    Saled_reports(id: '12', saler_name: "ليلى الجاسر", Number_of_salles: '40', s_points: '190', Period_of_s: '5 أيام'),
-    Saled_reports(id: '13', saler_name: "حسين الخالد", Number_of_salles: '42', s_points: '180', Period_of_s: '3 أيام'),
-    Saled_reports(id: '14', saler_name: "نادية الراشد", Number_of_salles: '45', s_points: '170', Period_of_s: 'يومين'),
+        s_M_points: '350',
+        Period_of_M_s: '2أيام',
+        Number_of_M_salles: '32',
+        id: '16',
+        saler_name: "محمد الحربي",
+        Number_of_Y_salles: '230',
+        s_Y_points: '2850',
+        Period_of_Y_s: '3 أيام'),
+    Saled_reports(
+        s_M_points: '100',
+        Period_of_M_s: '6 أيام',
+        Number_of_M_salles: '10',
+        id: '10',
+        saler_name: "علي الرشيدي",
+        Number_of_Y_salles: '70',
+        s_Y_points: '900',
+        Period_of_Y_s: '3 أيام'),
+    Saled_reports(
+        s_M_points: '80',
+        Period_of_M_s: '3 أيام',
+        Number_of_M_salles: '8',
+        id: '11',
+        saler_name: "فاطمة الراجحي",
+        Number_of_Y_salles: '60',
+        s_Y_points: '750',
+        Period_of_Y_s: '4 أيام'),
+    Saled_reports(
+        s_M_points: '70',
+        Period_of_M_s: '4 أيام',
+        Number_of_M_salles: '7',
+        id: '12',
+        saler_name: "محمد العتيبي",
+        Number_of_Y_salles: '50',
+        s_Y_points: '620',
+        Period_of_Y_s: '5 أيام'),
+    Saled_reports(
+        s_M_points: '60',
+        Period_of_M_s: '5 أيام',
+        Number_of_M_salles: '6',
+        id: '13',
+        saler_name: "ريم العنزي",
+        Number_of_Y_salles: '40',
+        s_Y_points: '500',
+        Period_of_Y_s: '7 أيام'),
+    Saled_reports(
+        s_M_points: '50',
+        Period_of_M_s: '7 أيام',
+        Number_of_M_salles: '5',
+        id: '14',
+        saler_name: "أحمد الفريد",
+        Number_of_Y_salles: '30',
+        s_Y_points: '380',
+        Period_of_Y_s: '3 أيام'),
+    Saled_reports(
+        s_M_points: '40',
+        Period_of_M_s: '3 أيام',
+        Number_of_M_salles: '4',
+        id: '15',
+        saler_name: "مريم الزيادي",
+        Number_of_Y_salles: '20',
+        s_Y_points: '250',
+        Period_of_Y_s: '4 أيام')
   ];
 }
 
@@ -773,32 +878,44 @@ class Order_detail_1 {
 class Saled_reports {
   String saler_name;
   String id;
-  String Number_of_salles;
-  String s_points;
-  String Period_of_s;
+  String Number_of_Y_salles;
+  String Number_of_M_salles;
+  String s_Y_points;
+  String s_M_points;
+  String Period_of_Y_s;
+  String Period_of_M_s;
 
   Saled_reports({
     required this.id,
     required this.saler_name,
-    required this.Number_of_salles,
-    required this.s_points,
-    required this.Period_of_s,
+    required this.Number_of_Y_salles,
+    required this.Number_of_M_salles,
+    required this.s_Y_points,
+    required this.s_M_points,
+    required this.Period_of_Y_s,
+    required this.Period_of_M_s,
   });
   factory Saled_reports.fromMap(Map<String, dynamic> map) {
     return Saled_reports(
       saler_name: map['saler_name'],
-      Number_of_salles: map['Number_of_salles'],
-      s_points: map['s_points'],
-      Period_of_s: map['Period_of_s'],
+      Number_of_Y_salles: map['Number_of_Y_salles'],
+      Number_of_M_salles: map['Number_of_M_salles'],
+      s_Y_points: map['s_Y_points'],
+      s_M_points: map['s_M_points'],
+      Period_of_Y_s: map['Period_of_Y_s'],
+      Period_of_M_s: map['Period_of_M_s'],
       id: map['id'],
     );
   }
   Map<String, dynamic> toMap() {
     return {
       'saler_name': saler_name, //
-      'Number_of_salles': Number_of_salles, //
-      'Period_of_s': Period_of_s, //
-      's_points': s_points,
+      'Number_of_Y_salles': Number_of_Y_salles, //
+      'Number_of_M_salles': Number_of_M_salles, //
+      'Period_of_Y_s': Period_of_Y_s, //
+      'Period_of_M_s': Period_of_M_s, //
+      's_Y_points': s_Y_points,
+      's_M_points': s_M_points,
       'id': id,
     };
   }

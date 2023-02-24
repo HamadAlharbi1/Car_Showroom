@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project4/contents/constants.dart';
 
 import 'Homepage.dart';
+import 'Sales_consultants.dart';
 import 'newcar.dart';
 import 'orders.dart';
 import 'report.dart';
@@ -26,7 +27,7 @@ class _navigationBarState extends State<navigationBar> {
       const Homepage(), // صالة العرض الرئيسيه
       const Orders(), //'طلبات العملاء
       const Stock(), // المستودع
-      const Report_page(), // التقارير
+      const Sales_consultants(), // مناديب المبيعات
     ];
 
     return Scaffold(
@@ -52,11 +53,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'التقارير',
-                        text_color: Car_Card_Constant.MyIconcolor,
+                        text_color: Colors_and_Dimentions.MyIconcolor,
                       ),
                     ),
                     selected: currentIndex == 0,
-                    selectedTileColor: Car_Card_Constant.SelectedColor,
+                    selectedTileColor: Colors_and_Dimentions.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 0;
@@ -69,11 +70,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'التقارير',
-                        text_color: Car_Card_Constant.MyIconcolor,
+                        text_color: Colors_and_Dimentions.MyIconcolor,
                       ),
                     ),
                     selected: currentIndex == 1,
-                    selectedTileColor: Car_Card_Constant.SelectedColor,
+                    selectedTileColor: Colors_and_Dimentions.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 1;
@@ -86,11 +87,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'اضافة سيارة',
-                        text_color: Car_Card_Constant.MyIconcolor,
+                        text_color: Colors_and_Dimentions.MyIconcolor,
                       ),
                     ),
                     selected: currentIndex == 2,
-                    selectedTileColor: Car_Card_Constant.SelectedColor,
+                    selectedTileColor: Colors_and_Dimentions.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 2;
@@ -103,11 +104,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'الصفحة الرئيسية',
-                        text_color: Car_Card_Constant.MyIconcolor,
+                        text_color: Colors_and_Dimentions.MyIconcolor,
                       ),
                     ),
                     selected: currentIndex == 3,
-                    selectedTileColor: Car_Card_Constant.SelectedColor,
+                    selectedTileColor: Colors_and_Dimentions.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 3;
@@ -120,11 +121,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'طلبات العملاء',
-                        text_color: Car_Card_Constant.MyIconcolor,
+                        text_color: Colors_and_Dimentions.MyIconcolor,
                       ),
                     ),
                     selected: currentIndex == 4,
-                    selectedTileColor: Car_Card_Constant.SelectedColor,
+                    selectedTileColor: Colors_and_Dimentions.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 4;
@@ -137,11 +138,11 @@ class _navigationBarState extends State<navigationBar> {
                       child: const My_textstyle(
                         My_fontsize: 20,
                         text_1: 'المستودع',
-                        text_color: Car_Card_Constant.MyIconcolor,
+                        text_color: Colors_and_Dimentions.MyIconcolor,
                       ),
                     ),
                     selected: currentIndex == 5,
-                    selectedTileColor: Car_Card_Constant.SelectedColor,
+                    selectedTileColor: Colors_and_Dimentions.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 5;
@@ -153,12 +154,12 @@ class _navigationBarState extends State<navigationBar> {
                       alignment: Alignment.topRight,
                       child: const My_textstyle(
                         My_fontsize: 20,
-                        text_1: 'التقارير',
-                        text_color: Car_Card_Constant.MyIconcolor,
+                        text_1: 'مستشاري المبيعات',
+                        text_color: Colors_and_Dimentions.MyIconcolor,
                       ),
                     ),
                     selected: currentIndex == 6,
-                    selectedTileColor: Car_Card_Constant.SelectedColor,
+                    selectedTileColor: Colors_and_Dimentions.SelectedColor,
                     onTap: () {
                       setState(() {
                         currentIndex = 6;

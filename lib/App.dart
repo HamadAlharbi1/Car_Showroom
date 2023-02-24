@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:project4/Homepage_contents/Report_Card.dart';
 import 'package:project4/pages/navigator.dart';
 
 import 'contents/constants.dart';
@@ -27,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       resDoc.set(order.toMap());
     }
     for (final reportOfYear in Data.reports1) {
-      final ordersCollection = FirebaseFirestore.instance.collection('report_of_year');
+      final ordersCollection = FirebaseFirestore.instance.collection('report_of_sales');
       final resDoc = ordersCollection.doc(reportOfYear.id);
       resDoc.set(reportOfYear.toMap());
     }
@@ -42,8 +41,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           drawerTheme: const DrawerThemeData(
-              backgroundColor: Car_Card_Constant.containercolor, scrimColor: Color.fromARGB(255, 249, 249, 249)),
-          appBarTheme: const AppBarTheme(backgroundColor: Car_Card_Constant.containercolor)),
+              backgroundColor: Colors_and_Dimentions.containercolor, scrimColor: Color.fromARGB(255, 249, 249, 249)),
+          appBarTheme: const AppBarTheme(backgroundColor: Colors_and_Dimentions.containercolor)),
     );
   }
 }

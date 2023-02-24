@@ -47,8 +47,8 @@ class _NewCarState extends State<NewCar> {
                   Container(
                     clipBehavior: Clip.hardEdge,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                    height: Car_Card_Constant.photo_Box_h,
-                    width: Car_Card_Constant.photo_Box_w,
+                    height: Colors_and_Dimentions.photo_Box_h,
+                    width: Colors_and_Dimentions.photo_Box_w,
                     child: Image.network(
                       'https://smartermsp.com/wp-content/uploads/2019/08/shutterstock_214359349.jpg',
                       fit: BoxFit.cover,
@@ -91,16 +91,16 @@ class _NewCarState extends State<NewCar> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
-                              width: Car_Card_Constant.textcontainer_w,
+                              width: Colors_and_Dimentions.textcontainer_w,
                               padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Car_Card_Constant.containercolor,
+                                color: Colors_and_Dimentions.containercolor,
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: const [
-                                  My_textstyle(text_1: 'رفع صورة', text_color: Car_Card_Constant.fontcolor),
+                                  My_textstyle(text_1: 'رفع صورة', text_color: Colors_and_Dimentions.fontcolor),
                                 ],
                               ),
                             ),
@@ -181,16 +181,16 @@ class _NewCarState extends State<NewCar> {
                       // }
                     },
                     child: Container(
-                      width: Car_Card_Constant.textcontainer_w,
+                      width: Colors_and_Dimentions.textcontainer_w,
                       padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: Car_Card_Constant.containercolor,
+                        color: Colors_and_Dimentions.containercolor,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: const [
-                          My_textstyle(text_1: "حفظ", text_color: Car_Card_Constant.fontcolor),
+                          My_textstyle(text_1: "حفظ", text_color: Colors_and_Dimentions.fontcolor),
                         ],
                       ),
                     ),
@@ -227,16 +227,16 @@ class text_field_container extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: Car_Card_Constant.textcontainer_w,
+                width: Colors_and_Dimentions.textcontainer_w,
                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Car_Card_Constant.containercolor,
+                  color: Colors_and_Dimentions.containercolor,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    My_textstyle(text_1: title_for_textfield, text_color: Car_Card_Constant.fontcolor),
+                    My_textstyle(text_1: title_for_textfield, text_color: Colors_and_Dimentions.fontcolor),
                   ],
                 ),
               ),
@@ -246,7 +246,7 @@ class text_field_container extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: Car_Card_Constant.textfield_container_w,
+                width: Colors_and_Dimentions.textfield_container_w,
                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -292,16 +292,16 @@ class _Choose_from_the_listState extends State<Choose_from_the_list> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: Car_Card_Constant.textcontainer_w,
+                width: Colors_and_Dimentions.textcontainer_w,
                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Car_Card_Constant.containercolor,
+                  color: Colors_and_Dimentions.containercolor,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
+                    My_textstyle(text_1: widget.title_of_list, text_color: Colors_and_Dimentions.fontcolor),
                   ],
                 ),
               ),
@@ -375,16 +375,16 @@ class _Choose_from_the_listState_2 extends State<Choose_from_the_list_2> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: Car_Card_Constant.textcontainer_w,
+                width: Colors_and_Dimentions.textcontainer_w,
                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Car_Card_Constant.containercolor,
+                  color: Colors_and_Dimentions.containercolor,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    My_textstyle(text_1: widget.title_of_list, text_color: Car_Card_Constant.fontcolor),
+                    My_textstyle(text_1: widget.title_of_list, text_color: Colors_and_Dimentions.fontcolor),
                   ],
                 ),
               ),

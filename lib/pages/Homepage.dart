@@ -66,8 +66,8 @@ class _HomepageState extends State<Homepage> {
               Container(
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                height: Car_Card_Constant.photo_Box_h,
-                width: Car_Card_Constant.photo_Box_w,
+                height: Colors_and_Dimentions.photo_Box_h,
+                width: Colors_and_Dimentions.photo_Box_w,
                 child: Image.network(
                   'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/25ec6b15678641.5629596a8daec.jpg',
                   fit: BoxFit.cover,
@@ -147,7 +147,7 @@ class height_1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(height: Car_Card_Constant.distance_between_card_parts);
+    return const SizedBox(height: Colors_and_Dimentions.distance_between_card_parts);
   }
 }
 
@@ -166,7 +166,7 @@ class custom_container extends StatelessWidget {
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: Car_Card_Constant.containercolor,
+            color: Colors_and_Dimentions.containercolor,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -177,12 +177,12 @@ class custom_container extends StatelessWidget {
                 text_color: const Color.fromARGB(255, 255, 255, 255),
               ),
               const SizedBox(
-                width: Car_Card_Constant.distance_between_card_parts,
+                width: Colors_and_Dimentions.distance_between_card_parts,
               ),
               My_textstyle(
                 My_fontsize: 20,
                 text_1: container_action,
-                text_color: Car_Card_Constant.fontcolor,
+                text_color: Colors_and_Dimentions.fontcolor,
               ),
             ],
           ),

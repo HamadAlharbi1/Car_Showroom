@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../Homepage_contents/Car_Card.dart';
 
-class Car_Card_Constant {
+class Colors_and_Dimentions {
   static const fontcolor = Color.fromARGB(255, 181, 181, 181);
   static const fontcolor2 = Color.fromARGB(255, 254, 254, 254);
   static const containercolor = Color.fromARGB(255, 63, 108, 147);
@@ -10,7 +10,7 @@ class Car_Card_Constant {
   static const MyIconcolor = Color.fromARGB(194, 255, 255, 255);
   static const SelectedColor = Color.fromARGB(255, 0, 48, 87);
   static const double photo_Box_h = 150;
-  static const double photo_Box_w = 450;
+  static const double photo_Box_w = 700;
   static const double distance_between_card_parts = 12;
   static const double textcontainer_w = 160;
   static const double icon_container_w = 35;
@@ -77,16 +77,16 @@ class Row_container_title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Car_Card_Constant.textcontainer_w,
+      width: Colors_and_Dimentions.report_container_w,
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Car_Card_Constant.containercolor,
+        color: Colors_and_Dimentions.containercolor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          My_textstyle(text_1: text_content, text_color: Car_Card_Constant.fontcolor),
+          My_textstyle(text_1: text_content, text_color: Colors_and_Dimentions.fontcolor),
         ],
       ),
     );
@@ -102,7 +102,7 @@ class My_textstyle22 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text_1,
-      style: TextStyle(color: text_color, fontSize: Car_Card_Constant.fontsize2),
+      style: TextStyle(color: text_color, fontSize: Colors_and_Dimentions.fontsize2, fontWeight: FontWeight.w600),
     );
   }
 }
@@ -114,7 +114,31 @@ class Row_container_Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Car_Card_Constant.textcontainer_w,
+      width: Colors_and_Dimentions.report_container_w,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: const Color.fromARGB(255, 212, 212, 212),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          My_textstyle22(text_1: text_content, text_color: const Color.fromARGB(255, 0, 0, 0)),
+        ],
+      ),
+    );
+  }
+}
+
+class Row_container_Content_2 extends StatelessWidget {
+  final String text_content;
+  const Row_container_Content_2({Key? key, required this.text_content}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Colors_and_Dimentions.report_container_w,
+      height: Colors_and_Dimentions.parking_container_h,
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -150,7 +174,7 @@ class sections_Of_reports extends StatelessWidget {
             children: [
               My_textstyle2(
                 text_1: title,
-                text_color: Car_Card_Constant.containercolor,
+                text_color: Colors_and_Dimentions.containercolor,
               )
             ],
           ),
@@ -168,17 +192,17 @@ class content_of_sections_Of_reports extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(4),
-      width: Car_Card_Constant.report_container_w,
+      width: Colors_and_Dimentions.report_container_w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Car_Card_Constant.containercolor,
+        color: Colors_and_Dimentions.containercolor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           My_textstyle2(
             text_1: title,
-            text_color: Car_Card_Constant.fontcolor,
+            text_color: Colors_and_Dimentions.fontcolor,
           )
         ],
       ),
@@ -198,8 +222,8 @@ class middle_image extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-      height: Car_Card_Constant.photo_Box_h,
-      width: Car_Card_Constant.photo_Box_w,
+      height: Colors_and_Dimentions.photo_Box_h,
+      width: Colors_and_Dimentions.photo_Box_w,
       clipBehavior: Clip.hardEdge,
       child: Image.network(
         widget.i.image,

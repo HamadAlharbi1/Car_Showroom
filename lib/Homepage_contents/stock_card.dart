@@ -60,56 +60,56 @@ class _Car_CardState extends State<Stok_card> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: Car_Card_Constant.textcontainer_w,
+                      width: Colors_and_Dimentions.textcontainer_w,
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: Car_Card_Constant.containercolor,
+                        color: Colors_and_Dimentions.containercolor,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          My_textstyle(text_1: widget.i.P_number, text_color: Car_Card_Constant.fontcolor2),
-                          const My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
-                          const My_textstyle(text_1: 'الموقف', text_color: Car_Card_Constant.fontcolor),
+                          My_textstyle(text_1: widget.i.P_number, text_color: Colors_and_Dimentions.fontcolor2),
+                          const My_textstyle(text_1: ' ', text_color: Colors_and_Dimentions.fontcolor),
+                          const My_textstyle(text_1: 'الموقف', text_color: Colors_and_Dimentions.fontcolor),
                         ],
                       ),
                     ),
                     const SizedBox(
-                      height: Car_Card_Constant.distance_between_card_parts,
+                      height: Colors_and_Dimentions.distance_between_card_parts,
                     ),
                     Container(
-                      width: Car_Card_Constant.textcontainer_w,
+                      width: Colors_and_Dimentions.textcontainer_w,
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: Car_Card_Constant.containercolor,
+                        color: Colors_and_Dimentions.containercolor,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          My_textstyle(text_1: widget.i.plate_number, text_color: Car_Card_Constant.fontcolor2),
-                          const My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
-                          const My_textstyle(text_1: 'اللوحة', text_color: Car_Card_Constant.fontcolor),
+                          My_textstyle(text_1: widget.i.plate_number, text_color: Colors_and_Dimentions.fontcolor2),
+                          const My_textstyle(text_1: ' ', text_color: Colors_and_Dimentions.fontcolor),
+                          const My_textstyle(text_1: 'اللوحة', text_color: Colors_and_Dimentions.fontcolor),
                         ],
                       ),
                     ),
                     const SizedBox(
-                      height: Car_Card_Constant.distance_between_card_parts,
+                      height: Colors_and_Dimentions.distance_between_card_parts,
                     ),
                     Container(
-                      width: Car_Card_Constant.textcontainer_w,
+                      width: Colors_and_Dimentions.textcontainer_w,
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: Car_Card_Constant.containercolor,
+                        color: Colors_and_Dimentions.containercolor,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          My_textstyle(text_1: widget.i.sellername, text_color: Car_Card_Constant.fontcolor2),
-                          const My_textstyle(text_1: ' ', text_color: Car_Card_Constant.fontcolor),
-                          const My_textstyle(text_1: 'المالك ', text_color: Car_Card_Constant.fontcolor),
+                          My_textstyle(text_1: widget.i.sellername, text_color: Colors_and_Dimentions.fontcolor2),
+                          const My_textstyle(text_1: ' ', text_color: Colors_and_Dimentions.fontcolor),
+                          const My_textstyle(text_1: 'المالك ', text_color: Colors_and_Dimentions.fontcolor),
                         ],
                       ),
                     ),
@@ -117,8 +117,8 @@ class _Car_CardState extends State<Stok_card> {
                 ),
                 Container(
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                  height: Car_Card_Constant.photo_Box_h,
-                  width: Car_Card_Constant.photo_Box_w,
+                  height: Colors_and_Dimentions.photo_Box_h,
+                  width: Colors_and_Dimentions.photo_Box_w,
                   clipBehavior: Clip.hardEdge,
                   child: Image.network(
                     widget.i.image,
@@ -153,15 +153,15 @@ class _Car_CardState extends State<Stok_card> {
                                       },
                                       child: Container(
                                           alignment: Alignment.center,
-                                          width: Car_Card_Constant.showdialog_bottom_w,
+                                          width: Colors_and_Dimentions.showdialog_bottom_w,
                                           padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(12),
-                                            color: Car_Card_Constant.containercolor,
+                                            color: Colors_and_Dimentions.containercolor,
                                           ),
                                           child: const My_textstyle(
                                             text_1: 'نعم',
-                                            text_color: Car_Card_Constant.title_container_color,
+                                            text_color: Colors_and_Dimentions.title_container_color,
                                           )),
                                     ),
                                     InkWell(
@@ -170,15 +170,15 @@ class _Car_CardState extends State<Stok_card> {
                                       },
                                       child: Container(
                                           alignment: Alignment.center,
-                                          width: Car_Card_Constant.showdialog_bottom_w,
+                                          width: Colors_and_Dimentions.showdialog_bottom_w,
                                           padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(12),
-                                            color: Car_Card_Constant.containercolor,
+                                            color: Colors_and_Dimentions.containercolor,
                                           ),
                                           child: const My_textstyle(
                                             text_1: 'لا',
-                                            text_color: Car_Card_Constant.title_container_color,
+                                            text_color: Colors_and_Dimentions.title_container_color,
                                           )),
                                     ),
                                   ],
@@ -186,30 +186,30 @@ class _Car_CardState extends State<Stok_card> {
                               ],
                               title: const Text(
                                 ' هل تريد تعديل معلومات المركبة ',
-                                style: TextStyle(color: Car_Card_Constant.containercolor),
+                                style: TextStyle(color: Colors_and_Dimentions.containercolor),
                               ),
-                              backgroundColor: Car_Card_Constant.title_container_color,
+                              backgroundColor: Colors_and_Dimentions.title_container_color,
                             );
                           },
                         );
                       },
                       child: Container(
-                        width: Car_Card_Constant.textcontainer_w,
+                        width: Colors_and_Dimentions.textcontainer_w,
                         padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: Car_Card_Constant.containercolor,
+                          color: Colors_and_Dimentions.containercolor,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: const [
-                            My_textstyle(text_1: 'تعديل', text_color: Car_Card_Constant.fontcolor),
+                            My_textstyle(text_1: 'تعديل', text_color: Colors_and_Dimentions.fontcolor),
                           ],
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: Car_Card_Constant.distance_between_card_parts,
+                      height: Colors_and_Dimentions.distance_between_card_parts,
                     ),
                     InkWell(
                       onTap: () {
@@ -222,22 +222,22 @@ class _Car_CardState extends State<Stok_card> {
                         );
                       },
                       child: Container(
-                        width: Car_Card_Constant.textcontainer_w,
+                        width: Colors_and_Dimentions.textcontainer_w,
                         padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: Car_Card_Constant.containercolor,
+                          color: Colors_and_Dimentions.containercolor,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: const [
-                            My_textstyle(text_1: 'معلومات السياره', text_color: Car_Card_Constant.fontcolor),
+                            My_textstyle(text_1: 'معلومات السياره', text_color: Colors_and_Dimentions.fontcolor),
                           ],
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: Car_Card_Constant.distance_between_card_parts,
+                      height: Colors_and_Dimentions.distance_between_card_parts,
                     ),
                     InkWell(
                       onTap: () {
@@ -269,13 +269,14 @@ class _Car_CardState extends State<Stok_card> {
                                                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                                 decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(12),
-                                                  color: Car_Card_Constant.containercolor,
+                                                  color: Colors_and_Dimentions.containercolor,
                                                 ),
                                                 child: Row(
                                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                   children: const [
                                                     My_textstyle(
-                                                        text_1: 'ليس الان ', text_color: Car_Card_Constant.fontcolor),
+                                                        text_1: 'ليس الان ',
+                                                        text_color: Colors_and_Dimentions.fontcolor),
                                                   ],
                                                 ),
                                               ),
@@ -295,14 +296,14 @@ class _Car_CardState extends State<Stok_card> {
                                                 padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                                                 decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(12),
-                                                  color: Car_Card_Constant.containercolor,
+                                                  color: Colors_and_Dimentions.containercolor,
                                                 ),
                                                 child: Row(
                                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                   children: const [
                                                     My_textstyle(
                                                         text_1: 'حفظ التعديلات',
-                                                        text_color: Car_Card_Constant.fontcolor),
+                                                        text_color: Colors_and_Dimentions.fontcolor),
                                                   ],
                                                 ),
                                               ),
@@ -316,7 +317,7 @@ class _Car_CardState extends State<Stok_card> {
                               ],
                               title: const Text(
                                 'في اي موقف بتوقفها ',
-                                style: TextStyle(color: Car_Card_Constant.containercolor),
+                                style: TextStyle(color: Colors_and_Dimentions.containercolor),
                               ),
                               backgroundColor: const Color.fromARGB(255, 151, 157, 161),
                             );
@@ -329,16 +330,16 @@ class _Car_CardState extends State<Stok_card> {
                         setState(() {});
                       },
                       child: Container(
-                        width: Car_Card_Constant.textcontainer_w,
+                        width: Colors_and_Dimentions.textcontainer_w,
                         padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: Car_Card_Constant.containercolor,
+                          color: Colors_and_Dimentions.containercolor,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: const [
-                            My_textstyle(text_1: ' الى صالة العرض', text_color: Car_Card_Constant.fontcolor),
+                            My_textstyle(text_1: ' الى صالة العرض', text_color: Colors_and_Dimentions.fontcolor),
                           ],
                         ),
                       ),

@@ -14,18 +14,22 @@ class Report_page extends StatefulWidget {
 
 class _HomepageState extends State<Report_page> {
   StreamSubscription? listener;
+  StreamSubscription? listener2;
   List<Saled_reports> report_of_year = [];
+  List<Saled_reports> report_of_Month = [];
   @override
   void initState() {
     listener?.cancel();
+    listener2?.cancel();
     super.initState();
     listenTocars();
+    listen_To_report_of_Month();
   }
 
   listenTocars() {
     listener ??= FirebaseFirestore.instance
-        .collection('report_of_year')
-        .orderBy('s_points', descending: true)
+        .collection('report_of_sales')
+        .orderBy('s_Y_points', descending: true)
         .snapshots()
         .listen((collection) {
       List<Saled_reports> newList = [];
@@ -34,6 +38,22 @@ class _HomepageState extends State<Report_page> {
         newList.add(car);
       }
       report_of_year = newList;
+      setState(() {});
+    });
+  }
+
+  listen_To_report_of_Month() {
+    listener2 ??= FirebaseFirestore.instance
+        .collection('report_of_sales')
+        .orderBy('s_M_points', descending: true)
+        .snapshots()
+        .listen((collection) {
+      List<Saled_reports> newList = [];
+      for (final doc in collection.docs) {
+        final car = Saled_reports.fromMap(doc.data());
+        newList.add(car);
+      }
+      report_of_Month = newList;
       setState(() {});
     });
   }
@@ -54,8 +74,8 @@ class _HomepageState extends State<Report_page> {
               Container(
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                height: Car_Card_Constant.photo_Box_h,
-                width: Car_Card_Constant.photo_Box_w,
+                height: Colors_and_Dimentions.photo_Box_h,
+                width: Colors_and_Dimentions.photo_Box_w,
                 child: Image.network(
                   'https://gomechanic.in/blog/wp-content/uploads/2020/08/Indian-car-sales-report-July-2020-brand-wise-01-e1602923109390.jpg',
                   fit: BoxFit.cover,
@@ -109,7 +129,7 @@ class _HomepageState extends State<Report_page> {
                                       const SizedBox(
                                         height: 4,
                                       ),
-                                      for (final sales in report_of_year)
+                                      for (final sales in report_of_Month)
                                         Column(
                                           children: [
                                             const SizedBox(
@@ -119,13 +139,13 @@ class _HomepageState extends State<Report_page> {
                                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                                               children: [
                                                 Row_container_Content(
-                                                  text_content: sales.s_points, //النقاط
+                                                  text_content: sales.s_Y_points, //النقاط
                                                 ),
                                                 Row_container_Content(
-                                                  text_content: sales.Period_of_s, //زمن المعاملة
+                                                  text_content: sales.Period_of_Y_s, //زمن المعاملة
                                                 ),
                                                 Row_container_Content(
-                                                  text_content: sales.Number_of_salles, //عدد السيارات
+                                                  text_content: sales.Number_of_Y_salles, //عدد السيارات
                                                 ),
                                                 Row_container_Content(
                                                   text_content: sales.saler_name, //البائع
@@ -164,7 +184,7 @@ class _HomepageState extends State<Report_page> {
                                       const SizedBox(
                                         height: 4,
                                       ),
-                                      for (final sales in Data.reports2)
+                                      for (final sales in report_of_year)
                                         Column(
                                           children: [
                                             const SizedBox(
@@ -174,13 +194,13 @@ class _HomepageState extends State<Report_page> {
                                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                                               children: [
                                                 Row_container_Content(
-                                                  text_content: sales.s_points, //النقاط
+                                                  text_content: sales.s_M_points, //النقاط
                                                 ),
                                                 Row_container_Content(
-                                                  text_content: sales.Period_of_s, //زمن المعاملة
+                                                  text_content: sales.Period_of_M_s, //زمن المعاملة
                                                 ),
                                                 Row_container_Content(
-                                                  text_content: sales.Number_of_salles, //عدد السيارات
+                                                  text_content: sales.Number_of_M_salles, //عدد السيارات
                                                 ),
                                                 Row_container_Content(
                                                   text_content: sales.saler_name, //البائع
