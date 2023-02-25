@@ -129,7 +129,7 @@ class _HomepageState extends State<Report_page> {
                                       const SizedBox(
                                         height: 4,
                                       ),
-                                      for (final sales in report_of_Month)
+                                      for (final sales in report_of_year) //
                                         Column(
                                           children: [
                                             const SizedBox(
@@ -184,7 +184,7 @@ class _HomepageState extends State<Report_page> {
                                       const SizedBox(
                                         height: 4,
                                       ),
-                                      for (final sales in report_of_year)
+                                      for (final sales in report_of_Month)
                                         Column(
                                           children: [
                                             const SizedBox(
@@ -211,46 +211,6 @@ class _HomepageState extends State<Report_page> {
                                         ),
                                     ],
                                   ),
-                                ),
-                                const sections_Of_reports(
-                                  title: 'مبيعات اليوم',
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: const [
-                                    content_of_sections_Of_reports(
-                                      title: 'المبلغ',
-                                    ),
-                                    content_of_sections_Of_reports(
-                                      title: 'السيارة',
-                                    ),
-                                    content_of_sections_Of_reports(
-                                      title: 'العميل',
-                                    ),
-                                    content_of_sections_Of_reports(
-                                      title: 'البائع',
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 4,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: const [
-                                    Row_container_Content(
-                                      text_content: '', //المبلغ
-                                    ),
-                                    Row_container_Content(
-                                      text_content: '', //السيارة
-                                    ),
-                                    Row_container_Content(
-                                      text_content: '', //العميل
-                                    ),
-                                    Row_container_Content(
-                                      text_content: '', //البائع
-                                    ),
-                                  ],
                                 ),
                               ],
                             ),

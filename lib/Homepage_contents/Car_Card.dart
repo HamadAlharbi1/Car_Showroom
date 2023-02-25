@@ -28,7 +28,7 @@ class _Car_CardState extends State<Car_Card> {
     _pNumberController.text = widget.i.P_number;
   }
 
-  _updateCar() async {
+  _updateCar() {
     try {
       DocumentReference carRef = FirebaseFirestore.instance.collection('stock').doc(widget.i.id);
       carRef.update({

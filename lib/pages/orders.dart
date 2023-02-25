@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../contents/constants.dart';
 import '../contents/modols.dart';
 import 'Homepage.dart';
+import 'add_order.dart';
 
 class Orders extends StatefulWidget {
   const Orders({Key? key}) : super(key: key);
@@ -15,9 +16,12 @@ class Orders extends StatefulWidget {
 
 class _OrdersState extends State<Orders> {
   int count = 0;
-  int count2 = 0;
+  int Deletedorders = 0;
+  int work_in_progress = 0;
+
   int total_P = 20;
   int get available_P => total_P - count - 2;
+  int get new_id => count + 1;
   StreamSubscription? listener;
   StreamSubscription? listener2;
   List<Order_detail_1> orders = []; //deleted_orders
@@ -29,11 +33,12 @@ class _OrdersState extends State<Orders> {
     super.initState();
     listenTocars();
     listenToDeletedorders();
-    listenTolength();
+    listenTopending();
     listenTodeleted_orders();
+    listenTowork_in_progress();
   }
 
-  listenTolength() {
+  listenTopending() {
     FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
       setState(() {
         count = collection.size;
@@ -44,11 +49,20 @@ class _OrdersState extends State<Orders> {
   listenToDeletedorders() {
     FirebaseFirestore.instance.collection('deleted_orders').snapshots().listen((collection) {
       setState(() {
-        count2 = collection.size;
+        Deletedorders = collection.size;
       });
     });
   }
 
+  listenTowork_in_progress() {
+    FirebaseFirestore.instance.collection('work_in_progress').snapshots().listen((collection) {
+      setState(() {
+        work_in_progress = collection.size;
+      });
+    });
+  }
+
+// work_in_progress
   listenTocars() {
     listener ??= FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
       List<Order_detail_1> newList = [];
@@ -81,6 +95,11 @@ class _OrdersState extends State<Orders> {
   final TextEditingController _insuranceController = TextEditingController();
   final TextEditingController _parkingNumberController = TextEditingController();
   final TextEditingController _licenseStatusController = TextEditingController();
+  final TextEditingController _V_modelController = TextEditingController();
+  final TextEditingController _V_colorController = TextEditingController();
+  final TextEditingController _V_typeController = TextEditingController();
+  final TextEditingController _phone_numberController = TextEditingController();
+  final TextEditingController _customer_nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +168,7 @@ class _OrdersState extends State<Orders> {
                                 const SizedBox(
                                   height: 8,
                                 ),
-                                for (var order in deleted_orders) ordercard(order: order),
+                                for (var order in deleted_orders) Deleted_Oreders(order: order),
                               ],
                             ),
                           ],
@@ -160,13 +179,13 @@ class _OrdersState extends State<Orders> {
                   },
                   child: head_title_icon(
                     container_action: 'الطلبات المهمله ',
-                    available_P: count2,
+                    available_P: Deletedorders,
                     imageUrl: 'https://thumbs.dreamstime.com/b/cancel-agreement-icon-189052111.jpg',
                   ),
                 ),
                 head_title_icon(
                   container_action: 'قيد التنفيذ',
-                  available_P: total_P,
+                  available_P: work_in_progress,
                   imageUrl: 'https://cdn-icons-png.flaticon.com/512/5038/5038308.png',
                 ),
                 head_title_icon(
@@ -201,31 +220,75 @@ class _OrdersState extends State<Orders> {
                                   return AlertDialog(
                                     title: const Text(
                                       'اضافة طلب جديد   ',
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: Colors_and_Dimentions.containercolor),
                                     ),
                                     actions: [
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: const [
-                                          Row_container_title(
-                                            text_content: 'الموديل',
+                                        children: [
+                                          text_field_container(
+                                            Controller: _V_modelController,
+                                            textfield_content: 'المديل',
+                                            title_for_textfield: 'مديل السيارة',
                                           ),
-                                          Row_container_title(
-                                            text_content: 'اللون',
+                                          text_field_container(
+                                            Controller: _V_colorController,
+                                            textfield_content: 'اللون',
+                                            title_for_textfield: 'لون السياره',
                                           ),
-                                          Row_container_title(
-                                            text_content: 'نوع المركبة',
+                                          text_field_container(
+                                            Controller: _V_typeController,
+                                            textfield_content: 'نوع السيارة',
+                                            title_for_textfield: 'ادخل نوع السيارة',
                                           ),
-                                          Row_container_title(
-                                            text_content: 'رقم الجوال ',
+                                          text_field_container(
+                                            Controller: _phone_numberController,
+                                            textfield_content: 'رقم الجوال',
+                                            title_for_textfield: 'ادخل رقم الجوال',
                                           ),
-                                          Row_container_title(
-                                            text_content: 'اسم العميل',
+                                          text_field_container(
+                                            Controller: _customer_nameController,
+                                            textfield_content: 'اسم العميل ',
+                                            title_for_textfield: 'ادخل اسم العميل ',
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              final CollectionReference collectionRef =
+                                                  FirebaseFirestore.instance.collection('orders');
+
+                                              collectionRef
+                                                  .doc(new_id.toString())
+                                                  .set({
+                                                    'V_model': _V_modelController.text,
+                                                    'id': new_id.toString(),
+                                                    'V_color': _V_colorController.text,
+                                                    'V_type': _V_typeController.text,
+                                                    'phone_number': _phone_numberController.text,
+                                                    'customer_name': _customer_nameController.text,
+                                                  })
+                                                  .then((value) => Navigator.pop(context))
+                                                  .catchError((error) => print('Failed to add document: $error'));
+                                            },
+                                            child: Container(
+                                              width: Colors_and_Dimentions.textcontainer_w,
+                                              padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(12),
+                                                color: Colors_and_Dimentions.containercolor,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                children: const [
+                                                  My_textstyle(
+                                                      text_1: "حفظ", text_color: Colors_and_Dimentions.fontcolor),
+                                                ],
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ],
-                                    backgroundColor: const Color.fromARGB(255, 104, 104, 104),
+                                    backgroundColor: Colors_and_Dimentions.title_container_color,
                                   );
                                 },
                               );
@@ -310,54 +373,56 @@ class _ordercardState extends State<ordercard> {
                       children: [
                         Column(
                           children: [
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  Navigator.pop(context);
-                                  FirebaseFirestore.instance
-                                      .collection('Mohammed')
-                                      .doc(widget.order.id)
-                                      .set(widget.order.toMap());
-                                  FirebaseFirestore.instance.collection('orders').doc(widget.order.id).delete();
-                                });
-                              },
-                              child: Container(
-                                  alignment: Alignment.center,
-                                  width: Colors_and_Dimentions.showdialog_bottom_w,
-                                  padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Colors_and_Dimentions.containercolor,
-                                  ),
-                                  child: const My_textstyle(
-                                    text_1: 'محمد',
-                                    text_color: Colors_and_Dimentions.title_container_color,
-                                  )),
-                            ),
+                            for (var i in Data.reports1)
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    Navigator.pop(context);
+                                    FirebaseFirestore.instance
+                                        .collection(i.saler_name.toString())
+                                        .doc(widget.order.id)
+                                        .set(widget.order.toMap());
+                                    FirebaseFirestore.instance.collection('orders').doc(widget.order.id).delete();
+                                    FirebaseFirestore.instance.collection('work_in_progress').doc(widget.order.id).set({
+                                      'sellername': i.saler_name.toString(),
+                                      'customer_name': widget.order.customer_name, //
+                                      'phone_number': widget.order.phone_number, //
+                                      'V_color': widget.order.V_color, //
+                                      'V_type': widget.order.V_type,
+                                      'id': widget.order.id,
+                                      'V_model': widget.order.V_model,
+                                    });
+                                  });
+                                },
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    Container(
+                                        alignment: Alignment.center,
+                                        width: Colors_and_Dimentions.saler_name_w,
+                                        padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(12),
+                                          color: Colors_and_Dimentions.containercolor,
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
+                                            My_textstyle(
+                                              text_1: i.saler_name.toString(),
+                                              text_color: Colors_and_Dimentions.title_container_color,
+                                            ),
+                                          ],
+                                        )),
+                                  ],
+                                ),
+                              ),
                             const SizedBox(
                               height: Colors_and_Dimentions.distance_between_card_parts,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.pop(context);
-                                FirebaseFirestore.instance
-                                    .collection('abdullah')
-                                    .doc(widget.order.id)
-                                    .set(widget.order.toMap());
-                                FirebaseFirestore.instance.collection('order').doc(widget.order.id).delete();
-                              },
-                              child: Container(
-                                  alignment: Alignment.center,
-                                  width: Colors_and_Dimentions.showdialog_bottom_w,
-                                  padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Colors_and_Dimentions.containercolor,
-                                  ),
-                                  child: const My_textstyle(
-                                    text_1: 'عبدالله',
-                                    text_color: Colors_and_Dimentions.title_container_color,
-                                  )),
                             ),
                           ],
                         ),
@@ -458,6 +523,119 @@ class _ordercardState extends State<ordercard> {
               ),
             ],
           ),
+        ),
+        const SizedBox(
+          height: 4,
+        )
+      ],
+    );
+  }
+}
+
+class Deleted_Oreders extends StatefulWidget {
+  const Deleted_Oreders({
+    Key? key,
+    required this.order,
+  }) : super(key: key);
+
+  final Order_detail_1 order;
+
+  @override
+  State<Deleted_Oreders> createState() => _Deleted_OredersState();
+}
+
+class _Deleted_OredersState extends State<Deleted_Oreders> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+                onTap: (() {
+                  setState(() {});
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        actions: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    Navigator.pop(context);
+
+                                    FirebaseFirestore.instance
+                                        .collection('deleted_orders')
+                                        .doc(widget.order.id)
+                                        .delete();
+                                  });
+                                },
+                                child: Container(
+                                    alignment: Alignment.center,
+                                    width: Colors_and_Dimentions.showdialog_bottom_w,
+                                    padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: Colors_and_Dimentions.containercolor,
+                                    ),
+                                    child: const My_textstyle(
+                                      text_1: 'نعم',
+                                      text_color: Colors_and_Dimentions.title_container_color,
+                                    )),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                    alignment: Alignment.center,
+                                    width: Colors_and_Dimentions.showdialog_bottom_w,
+                                    padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: Colors_and_Dimentions.containercolor,
+                                    ),
+                                    child: const My_textstyle(
+                                      text_1: 'لا',
+                                      text_color: Colors_and_Dimentions.title_container_color,
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ],
+                        title: const Text(
+                          'هل تريد ازالة هذا الطلب  ',
+                          style: TextStyle(color: Colors_and_Dimentions.containercolor),
+                        ),
+                        backgroundColor: Colors_and_Dimentions.title_container_color,
+                      );
+                    },
+                  );
+                }),
+                child: const Icon(
+                  Icons.delete,
+                  color: Color.fromARGB(255, 181, 181, 181),
+                )),
+            Row_container_Content(
+              text_content: widget.order.V_model, //الموديل
+            ),
+            Row_container_Content(
+              text_content: widget.order.V_color, //'اللون'
+            ),
+            Row_container_Content(
+              text_content: widget.order.V_type, //'نوع المركبة'
+            ),
+            Row_container_Content(
+              text_content: widget.order.phone_number, //'رقم الجوال '
+            ),
+            Row_container_Content(
+              text_content: widget.order.customer_name, //'اسم العميل'
+            ),
+          ],
         ),
         const SizedBox(
           height: 4,

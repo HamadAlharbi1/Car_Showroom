@@ -13,7 +13,7 @@ class Colors_and_Dimentions {
   static const double photo_Box_w = 700;
   static const double photo_Box_w2 = 450;
   static const double photo_Box_edit = 200;
-
+  static const double saler_name_w = 200;
   static const double distance_between_card_parts = 12;
   static const double textcontainer_w = 160;
   static const double icon_container_w = 35;

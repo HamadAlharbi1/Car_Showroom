@@ -92,7 +92,7 @@ class add_oreder extends StatelessWidget {
 // Create a new document in the collection
               collectionRef
                   .add({
-                    'sellername': '',
+                    'V_model': '',
                     'id': '',
                     'parknumber': _parkingNumberController.text,
                     'plate_number': _pNumberController.text,
@@ -168,29 +168,33 @@ class text_field_container extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: Colors_and_Dimentions.textfield_container_w,
-              padding: const EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: TextFormField(
-                controller: _priceController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: textfield_content,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: Colors_and_Dimentions.report_container_w,
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: const Color.fromARGB(255, 212, 212, 212),
+                ),
+                child: TextFormField(
+                  controller: _priceController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: textfield_content,
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

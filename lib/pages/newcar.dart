@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,9 +19,12 @@ class NewCar extends StatefulWidget {
 }
 
 class _NewCarState extends State<NewCar> {
+  int count = 0;
   late String selectedItem = 'Choose from the list';
   final selecteditrrm = 'Toyota';
   final String A11 = 'الاستمارة';
+  StreamSubscription? listener;
+  int get new_id => count + 1;
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _modelController = TextEditingController();
@@ -28,6 +32,21 @@ class _NewCarState extends State<NewCar> {
   final TextEditingController _insuranceController = TextEditingController();
   final TextEditingController _parkingNumberController = TextEditingController();
   final TextEditingController _licenseStatusController = TextEditingController();
+  void initState() {
+    listener?.cancel();
+
+    super.initState();
+
+    listenTolength();
+  }
+
+  listenTolength() {
+    FirebaseFirestore.instance.collection('showroom').snapshots().listen((collection) {
+      setState(() {
+        count = collection.size;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -151,9 +170,10 @@ class _NewCarState extends State<NewCar> {
 
 // Create a new document in the collection
                       collectionRef
-                          .add({
+                          .doc(new_id.toString()) // Set the ID of the document here
+                          .set({
                             'sellername': _nameController.text,
-                            'id': '',
+                            'id': new_id.toString(),
                             'parknumber': _parkingNumberController.text,
                             'plate_number': _pNumberController.text,
                             'Insurance': '2024',
@@ -171,14 +191,6 @@ class _NewCarState extends State<NewCar> {
                                 ),
                               ))
                           .catchError((error) => print('Failed to add document: $error'));
-
-                      // try {
-                      //   FirebaseFirestore.instance.collection('showroom').add({'Model': selectedItem});
-                      //   // Show a success message to the user here
-                      // } catch (error) {
-                      //   // Show an error message to the user here
-                      //   print('Error adding selected value to Firestore: $error');
-                      // }
                     },
                     child: Container(
                       width: Colors_and_Dimentions.textcontainer_w,

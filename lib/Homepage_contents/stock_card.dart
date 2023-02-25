@@ -375,12 +375,65 @@ class _Car_CardState extends State<Stok_card> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Cardetailss(
-                                                  car: widget.i,
-                                                )),
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            actions: [
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () {
+                                                      Navigator.pop(context);
+
+                                                      FirebaseFirestore.instance
+                                                          .collection('stock')
+                                                          .doc(widget.i.id)
+                                                          .delete();
+                                                    },
+                                                    child: Container(
+                                                        alignment: Alignment.center,
+                                                        width: Colors_and_Dimentions.showdialog_bottom_w,
+                                                        padding: const EdgeInsets.only(
+                                                            top: 4, bottom: 4, left: 10, right: 10),
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(12),
+                                                          color: Colors_and_Dimentions.containercolor,
+                                                        ),
+                                                        child: const My_textstyle(
+                                                          text_1: 'نعم',
+                                                          text_color: Colors_and_Dimentions.title_container_color,
+                                                        )),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                        alignment: Alignment.center,
+                                                        width: Colors_and_Dimentions.showdialog_bottom_w,
+                                                        padding: const EdgeInsets.only(
+                                                            top: 4, bottom: 4, left: 10, right: 10),
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(12),
+                                                          color: Colors_and_Dimentions.containercolor,
+                                                        ),
+                                                        child: const My_textstyle(
+                                                          text_1: 'لا',
+                                                          text_color: Colors_and_Dimentions.title_container_color,
+                                                        )),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                            title: const Text(
+                                              ' هل تريد ازالة هذه السيارة ؟ ',
+                                              style: TextStyle(color: Colors_and_Dimentions.containercolor),
+                                            ),
+                                            backgroundColor: Colors_and_Dimentions.title_container_color,
+                                          );
+                                        },
                                       );
                                     },
                                     child: Container(
@@ -394,7 +447,7 @@ class _Car_CardState extends State<Stok_card> {
                                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                                         children: const [
                                           My_textstyle(
-                                              text_1: 'معلومات السياره', text_color: Colors_and_Dimentions.fontcolor),
+                                              text_1: 'ازالة السيارة ', text_color: Colors_and_Dimentions.fontcolor),
                                         ],
                                       ),
                                     ),

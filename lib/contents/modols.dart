@@ -839,6 +839,7 @@ class Icons_1 {
 
 class Order_detail_1 {
   String customer_name;
+
   String id;
   String phone_number;
   String V_type;
@@ -865,6 +866,48 @@ class Order_detail_1 {
   }
   Map<String, dynamic> toMap() {
     return {
+      'customer_name': customer_name, //
+      'phone_number': phone_number, //
+      'V_color': V_color, //
+      'V_type': V_type,
+      'id': id,
+      'V_model': V_model,
+    };
+  }
+}
+
+class Workinprogress {
+  String customer_name;
+String sellername;
+  String id;
+  String phone_number;
+  String V_type;
+  String V_color;
+  String V_model;
+
+  Workinprogress({
+    required this.id,
+    required this.sellername,
+    required this.customer_name,
+    required this.phone_number,
+    required this.V_type,
+    required this.V_color,
+    required this.V_model,
+  });
+  factory Workinprogress.fromMap(Map<String, dynamic> map) {
+    return Workinprogress(
+      sellername : map ['sellername'],
+      customer_name: map['customer_name'],
+      phone_number: map['phone_number'],
+      V_type: map['V_type'],
+      V_color: map['V_color'],
+      id: map['id'],
+      V_model: map['V_model'],
+    );
+  }
+  Map<String, dynamic> toMap() {
+    return {
+      'sellername': sellername,
       'customer_name': customer_name, //
       'phone_number': phone_number, //
       'V_color': V_color, //
