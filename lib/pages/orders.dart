@@ -15,23 +15,36 @@ class Orders extends StatefulWidget {
 
 class _OrdersState extends State<Orders> {
   int count = 0;
+  int count2 = 0;
   int total_P = 20;
   int get available_P => total_P - count - 2;
   StreamSubscription? listener;
-  List<Order_detail_1> orders = [];
+  StreamSubscription? listener2;
+  List<Order_detail_1> orders = []; //deleted_orders
+  List<Order_detail_1> deleted_orders = [];
   @override
   void initState() {
     listener?.cancel();
+    listener2?.cancel();
     super.initState();
     listenTocars();
-
+    listenToDeletedorders();
     listenTolength();
+    listenTodeleted_orders();
   }
 
   listenTolength() {
     FirebaseFirestore.instance.collection('orders').snapshots().listen((collection) {
       setState(() {
         count = collection.size;
+      });
+    });
+  }
+
+  listenToDeletedorders() {
+    FirebaseFirestore.instance.collection('deleted_orders').snapshots().listen((collection) {
+      setState(() {
+        count2 = collection.size;
       });
     });
   }
@@ -44,6 +57,18 @@ class _OrdersState extends State<Orders> {
         newList.add(car);
       }
       orders = newList;
+      setState(() {});
+    });
+  }
+
+  listenTodeleted_orders() {
+    listener2 ??= FirebaseFirestore.instance.collection('deleted_orders').snapshots().listen((collection) {
+      List<Order_detail_1> newList = [];
+      for (final doc in collection.docs) {
+        final car = Order_detail_1.fromMap(doc.data());
+        newList.add(car);
+      }
+      deleted_orders = newList;
       setState(() {});
     });
   }
@@ -85,10 +110,59 @@ class _OrdersState extends State<Orders> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                head_title_icon(
-                  container_action: 'الطلبات الملغية',
-                  available_P: available_P,
-                  imageUrl: 'https://thumbs.dreamstime.com/b/cancel-agreement-icon-189052111.jpg',
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Container(
+                            alignment: Alignment.center,
+                            child: const Text(
+                              'الطلبات المهمله  ',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          actions: [
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: const [
+                                    Row_container_title(
+                                      text_content: 'الموديل',
+                                    ),
+                                    Row_container_title(
+                                      text_content: 'اللون',
+                                    ),
+                                    Row_container_title(
+                                      text_content: 'نوع المركبة',
+                                    ),
+                                    Row_container_title(
+                                      text_content: 'رقم الجوال ',
+                                    ),
+                                    Row_container_title(
+                                      text_content: 'اسم العميل',
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                for (var order in deleted_orders) ordercard(order: order),
+                              ],
+                            ),
+                          ],
+                          backgroundColor: const Color.fromARGB(255, 104, 104, 104),
+                        );
+                      },
+                    );
+                  },
+                  child: head_title_icon(
+                    container_action: 'الطلبات المهمله ',
+                    available_P: count2,
+                    imageUrl: 'https://thumbs.dreamstime.com/b/cancel-agreement-icon-189052111.jpg',
+                  ),
                 ),
                 head_title_icon(
                   container_action: 'قيد التنفيذ',
@@ -124,13 +198,34 @@ class _OrdersState extends State<Orders> {
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return const AlertDialog(
-                                    title: Text(
+                                  return AlertDialog(
+                                    title: const Text(
                                       'اضافة طلب جديد   ',
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    actions: [],
-                                    backgroundColor: Color.fromARGB(255, 104, 104, 104),
+                                    actions: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: const [
+                                          Row_container_title(
+                                            text_content: 'الموديل',
+                                          ),
+                                          Row_container_title(
+                                            text_content: 'اللون',
+                                          ),
+                                          Row_container_title(
+                                            text_content: 'نوع المركبة',
+                                          ),
+                                          Row_container_title(
+                                            text_content: 'رقم الجوال ',
+                                          ),
+                                          Row_container_title(
+                                            text_content: 'اسم العميل',
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                    backgroundColor: const Color.fromARGB(255, 104, 104, 104),
                                   );
                                 },
                               );
@@ -239,7 +334,7 @@ class _ordercardState extends State<ordercard> {
                                     text_color: Colors_and_Dimentions.title_container_color,
                                   )),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: Colors_and_Dimentions.distance_between_card_parts,
                             ),
                             InkWell(
@@ -294,6 +389,10 @@ class _ordercardState extends State<ordercard> {
                                 InkWell(
                                   onTap: () {
                                     Navigator.pop(context);
+                                    FirebaseFirestore.instance
+                                        .collection('deleted_orders')
+                                        .doc(widget.order.id)
+                                        .set(widget.order.toMap());
                                     FirebaseFirestore.instance.collection('orders').doc(widget.order.id).delete();
                                   },
                                   child: Container(

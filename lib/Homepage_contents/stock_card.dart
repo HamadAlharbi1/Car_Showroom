@@ -75,9 +75,28 @@ class _Car_CardState extends State<Stok_card> {
                       ),
                     ],
                   ),
-                  Image.network(
-                    'https://png.pngitem.com/pimgs/s/150-1509061_transparent-car-top-view-png-car-top-view.png',
-                    height: Colors_and_Dimentions.photo_Box_h,
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: SizedBox(
+                                width: Colors_and_Dimentions.photo_Box_w2,
+                                height: Colors_and_Dimentions.photo_Box_h,
+                                child: Image.network(
+                                  widget.i.image,
+                                  fit: BoxFit.cover,
+                                )),
+                            backgroundColor: Colors_and_Dimentions.title_container_color,
+                          );
+                        },
+                      );
+                    },
+                    child: Image.network(
+                      'https://png.pngitem.com/pimgs/s/150-1509061_transparent-car-top-view-png-car-top-view.png',
+                      height: Colors_and_Dimentions.photo_Box_h,
+                    ),
                   ),
                   const SizedBox(
                     width: 12,
@@ -161,7 +180,7 @@ class _Car_CardState extends State<Stok_card> {
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
                                     My_textstyle(
-                                        My_fontsize: 50,
+                                        My_fontsize: Colors_and_Dimentions.fontsize32,
                                         text_1: widget.i.P_number,
                                         text_color: Colors_and_Dimentions.containercolor),
                                   ],

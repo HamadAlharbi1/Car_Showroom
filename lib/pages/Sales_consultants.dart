@@ -63,120 +63,125 @@ class _HomepageState extends State<Sales_consultants> {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SizedBox(
-          height: 900,
-          child: ListView(
-            children: [
-              const SizedBox(
-                height: 24,
+        child: ListView(
+          children: [
+            const SizedBox(
+              height: 24,
+            ),
+            Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+              height: Colors_and_Dimentions.photo_Box_edit,
+              width: Colors_and_Dimentions.photo_Box_w,
+              child: Image.network(
+                'https://di-uploads-development.dealerinspire.com/boardwalkhonda/uploads/2021/06/Car-Showroom-3-banner-2.jpg',
+                fit: BoxFit.cover,
               ),
-              Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                height: Colors_and_Dimentions.photo_Box_h,
-                width: Colors_and_Dimentions.photo_Box_w,
-                child: Image.network(
-                  'https://t4.ftcdn.net/jpg/04/83/26/85/360_F_483268546_2RYpGrXpbOzB4ogRrzF3zDonwijt9MIF.jpg',
-                ),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              // const Report_Card(),
-              Column(
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            SizedBox(
+              height: 900,
+              child: ListView(
                 children: [
-                  Container(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: const Color.fromARGB(61, 181, 181, 181),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: const [
-                                content_of_sections_Of_reports(
-                                  title: 'النقاط', //
+                  // const Report_Card(),
+                  Column(
+                    children: [
+                      Container(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: const Color.fromARGB(61, 181, 181, 181),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: const [
+                                    content_of_sections_Of_reports(
+                                      title: 'النقاط', //
+                                    ),
+                                    content_of_sections_Of_reports(
+                                      title: 'زمن المعاملة',
+                                    ),
+                                    content_of_sections_Of_reports(
+                                      title: 'الهدف الشهري ',
+                                    ),
+                                    content_of_sections_Of_reports(
+                                      title: 'تقييم العملاء',
+                                    ),
+                                    content_of_sections_Of_reports(
+                                      title: 'قيد التنفيذ',
+                                    ),
+                                    content_of_sections_Of_reports(
+                                      title: 'البائع',
+                                    ),
+                                  ],
                                 ),
-                                content_of_sections_Of_reports(
-                                  title: 'زمن المعاملة',
+                                const SizedBox(
+                                  height: 4,
                                 ),
-                                content_of_sections_Of_reports(
-                                  title: 'الهدف الشهري ',
-                                ),
-                                content_of_sections_Of_reports(
-                                  title: 'تقييم العملاء',
-                                ),
-                                content_of_sections_Of_reports(
-                                  title: 'قيد التنفيذ',
-                                ),
-                                content_of_sections_Of_reports(
-                                  title: 'البائع',
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            SizedBox(
-                              height: 900,
-                              child: ListView(
-                                children: [
-                                  const SizedBox(
-                                    height: 4,
-                                  ),
-                                  for (final sales in sales_consultants)
-                                    InkWell(
-                                      onTap: (() {}),
-                                      child: Column(
-                                        children: [
-                                          const SizedBox(
-                                            height: 6,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                SizedBox(
+                                  height: 900,
+                                  child: ListView(
+                                    children: [
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      for (final sales in sales_consultants)
+                                        InkWell(
+                                          onTap: (() {}),
+                                          child: Column(
                                             children: [
-                                              Row_container_Content_2(
-                                                text_content: sales.s_Y_points, //النقاط
+                                              const SizedBox(
+                                                height: 6,
                                               ),
-                                              Row_container_Content_2(
-                                                text_content: sales.Period_of_Y_s, //زمن المعاملة
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                children: [
+                                                  Row_container_Content_2(
+                                                    text_content: sales.s_Y_points, //النقاط
+                                                  ),
+                                                  Row_container_Content_2(
+                                                    text_content: sales.Period_of_Y_s, //زمن المعاملة
+                                                  ),
+                                                  Row_container_Content_2(
+                                                    text_content: sales.Number_of_Y_salles, //عدد السيارات
+                                                  ),
+                                                  Row_container_Content_2(
+                                                    text_content: sales.Number_of_Y_salles, //عدد السيارات
+                                                  ),
+                                                  Row_container_Content_2(
+                                                    text_content: sales.Number_of_Y_salles, //عدد السيارات
+                                                  ),
+                                                  Row_container_Content_2(
+                                                    text_content: sales.saler_name, //البائع
+                                                  ),
+                                                ],
                                               ),
-                                              Row_container_Content_2(
-                                                text_content: sales.Number_of_Y_salles, //عدد السيارات
-                                              ),
-                                              Row_container_Content_2(
-                                                text_content: sales.Number_of_Y_salles, //عدد السيارات
-                                              ),
-                                              Row_container_Content_2(
-                                                text_content: sales.Number_of_Y_salles, //عدد السيارات
-                                              ),
-                                              Row_container_Content_2(
-                                                text_content: sales.saler_name, //البائع
+                                              const SizedBox(
+                                                height: 6,
                                               ),
                                             ],
                                           ),
-                                          const SizedBox(
-                                            height: 6,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                ],
-                              ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      )
+                    ],
                   )
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       )),
     );
