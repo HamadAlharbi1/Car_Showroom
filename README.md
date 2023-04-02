@@ -1,4 +1,4 @@
-# Car_Showroom_dashboard
+# Car Showroom dashboard
 
 Car Showroom Dashboard is a web application built with Flutter that provides a real-time view of a car showroom's operations. The dashboard displays key performance indicators (KPIs) such as sales, inventory, and customer traffic, allowing the showroom manager to make data-driven decisions.
 The main features of the Car Showroom Dashboard include:
