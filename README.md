@@ -12,3 +12,5 @@ Sales management: The application allows sales staff to manage leads, track sale
 Inventory management: The application tracks inventory levels, allows staff to add new cars to the inventory, and alerts the manager when inventory levels are low.
 
 Overall, the Car Showroom Dashboard provides a comprehensive view of the car showroom's operations and enables the manager to make data-driven decisions. The application is easy to use, customizable, and can be accessed from anywhere using a mobile device.
+
+
